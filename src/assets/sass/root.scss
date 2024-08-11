@@ -1,0 +1,466 @@
+/* CODESTITCH STYLES, RESET, HEADER/NAVIGATION AND FOOTER */
+
+/*-- -------------------------- -->
+<---        Core Styles         -->
+<--- -------------------------- -*/
+
+/* CodeStitch Root and Helpers */
+@media only screen and (min-width: 0rem) {
+    // Website colors
+    :root {
+        --primary: #ffba19;
+        --primaryLight: #ffd675;
+        --secondary: #001f3f;
+        --secondaryLight: #001f3f;
+        --headerColor: #1a1a1a;
+        --bodyTextColor: #4e4b66;
+        --bodyTextColorWhite: #fafbfc;
+
+        /* 13px - 16px */
+        --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+        /* 31px - 49px */
+        --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+        --bodyFontSize: 1rem;
+
+        /* 60px - 100px top and bottom */
+        --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    }
+
+    // Text styles - can be replaced using CodeStitch's "Content Flair" Stitches
+    .cs-topper {
+        display: block;
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: var(--topperFontSize);
+        line-height: 1.2em;
+        font-weight: 700;
+        color: var(--primary);
+        text-align: inherit;
+    }
+
+    .cs-title {
+        position: relative;
+        margin: 0 0 1rem 0;
+        max-width: 43.75rem;
+        font-size: var(--headerFontSize);
+        line-height: 1.2em;
+        font-weight: 900;
+        color: var(--headerColor);
+        text-align: inherit;
+    }
+
+    .cs-text {
+        margin: 0;
+        max-width: 40.625rem;
+        width: 100%;
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        text-align: inherit;
+    }
+
+    // Button - can be replaced using CodeStitch's "Button" Stitches
+    .cs-button-solid {
+        z-index: 1;
+        position: relative;
+        display: inline-block;
+        background-color: var(--primary);
+        width: auto;
+        padding: 0 calc(30 / 16 * 1rem);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: calc(16 / 16 * 1rem);
+        line-height: calc(50 / 16 * 1em);
+        font-weight: bold;
+
+        // Transition Properties
+        color: #000;
+        transition: color 0.3s;
+        transition-delay: 0.1s;
+        text-align: center;
+
+        &:hover {
+            color: #fff;
+            &:before {
+                width: 100%;
+            }
+        }
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            opacity: 1;
+            display: block;
+            background-color: #000;
+            height: 100%;
+
+            //Transition properties
+            width: 0;
+            transition: width 0.3s;
+        }
+    }
+
+    .cs-hide-on-mobile {
+        display: none;
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    .cs-hide-on-mobile {
+        display: block;
+    }
+
+    .cs-hide-on-desktop {
+        display: none;
+    }
+}
+
+/* Fonts and general styles */
+@media only screen and (min-width: 0rem) {
+    body,
+    html {
+        margin: 0;
+        overflow-x: hidden;
+        padding: 0;
+        font-family: "Roboto", Arial, sans-serif;
+        font-size: 100%;
+        color: var(--bodyTextColor);
+    }
+
+    *,
+    *:before,
+    *:after {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    body {
+        transition: background-color 0.3s;
+    }
+
+    .container {
+        position: relative;
+        margin: auto;
+        width: 92%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        color: var(--headerColor);
+    }
+
+    p,
+    li,
+    a {
+        margin: 0;
+        font-size: calc(16 / 16 * 1rem);
+        line-height: 1.5em;
+    }
+
+    p,
+    li {
+        color: #353535;
+    }
+
+    a,
+    button {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    // Hidden Screen reader skip nav button
+    .skip {
+        z-index: -1111111;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+    // Grab your fonts to locally host from https://google-webfonts-helper.herokuapp.com/fonts
+
+    /* roboto-regular - latin */
+    @font-face {
+        font-style: normal;
+        font-family: "Roboto";
+        font-weight: 400;
+        font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-regular.woff2") format("woff2"),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* roboto-700 - latin */
+    @font-face {
+        font-style: normal;
+        font-family: "Roboto";
+        font-weight: 700;
+        font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-700.woff2") format("woff2"),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+    /* roboto-900 - latin */
+    @font-face {
+        font-style: normal;
+        font-family: "Roboto";
+        font-weight: 900;
+        font-display: swap;
+        src: local(""), url("/assets/fonts/roboto-v29-latin-900.woff2") format("woff2"),
+            /* Chrome 26+, Opera 23+, Firefox 39+ */ url("/assets/fonts/roboto-v29-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+}
+
+/* Reset Margins */
+@media only screen and (min-width: 1024px) {
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* Scale full website with the viewport width */
+@media only screen and (min-width: 3000px) {
+    body,
+    html {
+        font-size: 0.55vw;
+    }
+}
+
+/*-- -------------------------- -->
+<---   Interior Page Header     -->
+<--- -------------------------- -*/
+
+/* Mobile */
+@media only screen and (min-width: 0rem) {
+    #int-hero {
+        z-index: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 30vh;
+        padding-top: calc(50 / 16 * 1rem);
+
+        picture {
+            z-index: -2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        h1 {
+            position: relative;
+            margin: 0 auto;
+            margin-top: calc(70 / 16 * 1rem);
+            margin-bottom: calc(30 / 16 * 1rem);
+            max-width: calc(500 / 16 * 1rem);
+            width: 96%;
+            font-size: calc(64 / 30 * 1rem);
+            color: #fff;
+            text-align: center;
+        }
+
+        p {
+            display: block;
+            margin: auto;
+            margin-bottom: calc(30 / 16 * 1rem);
+            max-width: calc(400 / 16 * 1rem);
+            width: 96%;
+            color: #fff;
+            text-align: center;
+        }
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            opacity: 0.7;
+            display: block;
+            background: #000;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+/* Tablet */
+@media only screen and (min-width: 48rem) {
+    #int-hero {
+        font-size: 100%;
+
+        h1 {
+            font-size: calc(64 / 16 * 1rem);
+        }
+    }
+}
+
+/* Small Desktop */
+@media only screen and (min-width: 64rem) {
+    #int-hero {
+        background-attachment: fixed;
+        min-height: calc(300 / 16 * 1rem);
+        height: auto;
+        padding-top: calc(180 / 16 * 1rem);
+        font-size: inherit;
+        padding-block-end: calc(100 / 16 * 1rem);
+    }
+}
+
+/*-- -------------------------- -->
+<---    Final Call To Action    -->
+<--- -------------------------- -*/
+
+/* Mobile */
+@media only screen and (min-width: 0rem) {
+    #cta {
+        position: relative;
+        padding: calc(50 / 16 * 1rem) 0;
+
+        .container {
+            text-align: center;
+        }
+
+        picture {
+            z-index: -2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .title {
+            position: relative;
+            margin-bottom: calc(36 / 16 * 1rem);
+            font-size: min(9vw, 3rem);
+            line-height: calc(58 / 48 * 1em);
+            font-weight: 900;
+            color: #fff;
+            text-align: center;
+        }
+
+        p {
+            opacity: 1;
+            margin: auto;
+            margin-bottom: calc(36 / 16 * 1rem);
+            max-width: calc(598 / 16 * 1rem);
+            width: 96%;
+            color: #fff;
+            text-align: center;
+        }
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: "";
+            opacity: 0.7;
+            display: block;
+            background: #000;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+/* Small Desktop */
+@media only screen and (min-width: 64rem) {
+    #cta {
+        padding: calc(168 / 16 * 1rem) 0;
+    }
+}
+
+/* Large Desktop */
+@media only screen and (min-width: 1300px) {
+    #cta {
+        position: relative;
+        margin-top: calc(100 / 16 * 1rem);
+        .container {
+            margin: auto;
+            width: 90.0625%;
+        }
+
+        picture {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90.0625%;
+
+            &:before {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: "";
+                opacity: 0.7;
+                display: block;
+                background: #000;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        &:before {
+            display: none;
+        }
+        &:after {
+            z-index: -3;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            content: "";
+            opacity: 1;
+            transform: translateX(-50%);
+            display: block;
+            background: url("/assets/svgs/cta-squares.svg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: calc(1108 / 16 * 1rem);
+            width: calc(2000 / 16 * 1rem);
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #cta {
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
