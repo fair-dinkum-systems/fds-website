@@ -32,21 +32,25 @@
 
         h2 {
             font-size: 1.8em;
-            margin: 0 0 50px;
+            margin: 0 0 100px;
             font-weight: 400;
             color: #4a4a4a;
         }
 
         p {
-            padding-bottom: 25px;
         }
 
         .alltext {
+            text-align: left;
             padding: 0 20px;
             max-width: 600px;
             margin: 0 auto;
             padding-bottom: 80px;
 
+        }
+
+        .alltext li {
+            margin-bottom: 20px;
         }
 
         .team-section {
@@ -118,11 +122,17 @@
     <h1>Fair Dinkum Systems</h1>
     <h2>Advanced Battery Modelling</h2>
     <div class="alltext">
-        <p>We are a team of data scientists developing a modern, transformer based Machine Learning algorithm to provide accurate and cost-effective, battery health estimations. Our system allows manufacturers to construct more reliable battery packs. We are currently developing our platform which will allow manufacturers to upload their cycling data and get automatic accurate estimations of EOL and battery health as well as a proprietary AI enabled battery health sensing device which can give similar accuracy as a traditional potentiostat while requiring less calibration and less expensive components</p>
-
-        <p>We have demonstrated the accuracy of our models on an open source dataset of 124 commercial LFP/graphite cells (A123 Systems, model APR18650M1A, 1.1Ah nominal capacity), the full specification of which are available <a href="https://www.batteryspace.com/prod-specs/6612.pdf?srsltid=AfmBOoqpXa4qEUYK7hPREe9zyuF9gWVbEbU5oTE-sJ51ZgUe7zm01UbN">here</a> and are in the process of publishing our results.</p>
+        <p>Our thesis is as follows:</p>
+        <ol>
+            <li> Battery sales have been increasing 33% year on year for the last 30 years and with the rise of EVs and Autonomous Embodied Systems this trend is likely to continue well into the next 20 years.</li>
+            <li> Deep learning is highly appropriate for modelling complex, non-linear systems like battery chemistry.</li>
+        </ol> 
         
-        <p>We are currently seeking participants from industry to perform a joint pilot to demonstrate the capabilities of our algorithm to take battery cycling data (i.e. Voltage, Current, Impedance and Temperature measurements) and provide accurate estimates of battery Remaining Useful Life. We are particularly interested in connecting with companies who are currently collecting such data on a commercial scale.
+        <p>To prove our thesis we have developed a machine learning algorithm capable of accurately estimating the Remaining Useful Life of LFP/graphite cells</p>
+
+        <p>On average using 15 cycles of cycling data we can predict RUL within 133 cycles which is a significant improvement over non-deep learning approaches, which require 100 cycles worth of data to achieve similar performance.</p>
+
+        <p>We are currently working on securing a joint pilot project with an existing manufacturers from industry to demonstrate the capabilities of machine learning in the battery EOL estimation space at a commercial scale.</p>
         </p>
     </div>
 
