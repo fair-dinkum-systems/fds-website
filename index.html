@@ -100,6 +100,20 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
+
+        .graph {
+            width: 590px;
+            height: 600px;
+
+            border-radius: 5%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            margin-top: 20px;
+
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
         .member-name {
             font-weight: 600;
             font-size: 1.2em;
@@ -111,62 +125,115 @@
             color: #666;
         }
 
-        .contact-us {
-            /* background-color: #f8f8f8; */
-            /* font-size: 1.2em; */
-            padding-bottom: 150px;
-        }
+        .contact-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding-bottom: 300px;
+            }
+
+            .contact-us {
+            font-family: system-ui, -apple-system, sans-serif;
+
+            }
+
+            .copy-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            }
+
+            .copy-button:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            .copy-button svg {
+            width: 20px;
+            height: 20px;
+            }
     </style>
 </head>
 <body>
 <img ,="" alt="Banner Image" class="banner" src="public/images/fellows-cropped.JPG"/>
 <h1>Fair Dinkum Systems</h1>
-<h2>Advanced Battery Modelling</h2>
+<h2>Revolutionizing Battery Life Prediction</h2>
 <div class="alltext">
-<p>Our thesis is as follows:</p>
+<p>The future of energy is electric, and batteries are at its heart:</p>
 <ol>
-<li> Battery sales have been increasing 33% year on year for the last 30 years and with the rise of EVs and Autonomous Embodied Systems this trend is likely to continue well into the next 20 years.</li>
-<li> Deep learning is highly appropriate for modelling complex, non-linear systems like battery chemistry.</li>
+<li>Global battery demand has grown 33% annually for three decades, with electric vehicles and autonomous systems driving even stronger future growth</li>
+<li>Battery chemistry's complex, non-linear behavior makes it ideal for deep learning applications</li>
 </ol>
-<p>To prove our thesis we have developed a machine learning algorithm capable of accurately estimating the Remaining Useful Life of LFP/graphite cells</p>
-<p>On average using 15 cycles of cycling data we can predict RUL within 133 cycles which is a significant improvement over non-deep learning approaches, which require 100 cycles worth of data to achieve similar performance.</p>
-<p>We are currently working on securing a joint pilot project with an existing manufacturers from industry to demonstrate the capabilities of machine learning in the battery EOL estimation space at a commercial scale.</p>
+<p>
+<p>We're building the next generation of battery lifecycle management software. Our SaaS platform (in development) empowers manufacturers to precisely forecast battery Remaining Useful Life (RUL) and perform Impedance Matching using cutting-edge machine learning.</p>
+
+<p>Using a well known battery charging dataset our algorithm accurately predicts the RUL of LFP/graphite cells with just 15 charging cycles of data. This represents a dramatic improvement over conventional methods that require 100+ cycles for comparable accuracy.</p>
+<img alt="Team Member 1" class="graph" src="public/images/graph.png"/>
+<p>What this means in practice: We can predict remaining battery life within 133 cycles using 85% less data than traditional approaches. This enables faster quality control, reduced testing costs, and more efficient battery development.</p>
+<p>We're now partnering with battery manufacturers to demonstrate these capabilities at commercial scale. Together, we're building a more sustainable and efficient energy future.</p>
 
 </div>
 <div class="team-section">
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/louka_ewington-pitsos.jpg"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/louka_ewington-pitsos.jpg"/>
 <div class="member-name">Louka Ewington-Pitsos</div>
 <div class="member-title">Chief Operating Officer</div>
 </div>
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/michael_reitzenstein.jpg"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/michael_reitzenstein.jpg"/>
 <div class="member-name">Michael Reitzenstein</div>
 <div class="member-title">Principle Data Scientist</div>
 </div>
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/goh.png"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/goh.png"/>
 <div class="member-name">Victor Goh</div>
 <div class="member-title">Research Scientist</div>
 </div>
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/cadence_(yifei)_liu.jpg"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/cadence_(yifei)_liu.jpg"/>
 <div class="member-name">Cadence (Yifei) Liu</div>
 <div class="member-title">Data Engineer</div>
 </div>
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/alan_huynh.jpg"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/alan_huynh.jpg"/>
 <div class="member-name">Alan Huynh</div>
 <div class="member-title">Machine Learning Engineer</div>
 </div>
 <div class="team-member">
-<img alt="Team Member 1" class="profile-pic" src="team_images/lucas_rose-winters.jpg"/>
+<img alt="Team Member 1" class="profile-pic" src="public/images/team_images/lucas_rose-winters.jpg"/>
 <div class="member-name">Lucas Rose-Winters</div>
 <div class="member-title">Backend Developer</div>
 </div>
 </div>
-<div class="contact-us">
-        gday [at] fairdinkumsystems [dot] com
-    </div>
+<!-- <div class="contact-us">gday@fairdinkumsystems.com</div> -->
+
+<div class="contact-container">
+    <div class="contact-us">gday@fairdinkumsystems.com</div>
+    <button class="copy-button" onclick="copyEmail()" title="Copy email address">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+      </svg>
+    </button>
+  </div>
+  
+  <script>
+  function copyEmail() {
+    const email = 'gday@fairdinkumsystems.com';
+    navigator.clipboard.writeText(email).then(() => {
+      // Optional: Add visual feedback that the copy was successful
+      const button = document.querySelector('.copy-button');
+      button.style.backgroundColor = 'rgba(0, 255, 0, 0.1)';
+      setTimeout(() => {
+        button.style.backgroundColor = '';
+      }, 200);
+    });
+  }
+  </script>
 </body>
 </html>
