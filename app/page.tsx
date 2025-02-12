@@ -2,6 +2,7 @@ import Image from "next/image";
 import Banner from "@/components/Banner";
 import TeamSection from "@/components/TeamSection";
 import ContactSection from "@/components/ContactSection";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -62,6 +63,12 @@ export default function Home() {
           capabilities at commercial scale. Together, we're building a more
           sustainable and efficient energy future.
         </p>
+      </div>
+
+      <div className="mt-12 mb-20">
+        <Link href="/blog" className="text-blue-600 hover:underline text-lg">
+          Check out our blog
+        </Link>
       </div>
 
       <TeamSection />
