@@ -9,7 +9,7 @@
     #sbs {
         padding: var(--sectionPadding);
 
-        .cs-container {
+        .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -20,7 +20,7 @@
             row-gap: calc(40 / 16 * 1rem);
         }
 
-        .cs-left {
+        .left {
             position: relative;
             height: calc(636 / 16 * 1em);
             /* using ems so we can use font size to scale the whole section */
@@ -29,7 +29,7 @@
             font-size: min(2.31vw, 0.7em);
         }
 
-        .cs-picture {
+        .picture {
             position: absolute;
             display: block;
             border-radius: calc(24 / 16 * 1em);
@@ -46,14 +46,14 @@
             }
         }
 
-        .cs-picture1 {
+        .picture1 {
             top: 0;
             left: 0;
             height: calc(581 / 16 * 1em);
             width: calc(522 / 16 * 1em);
         }
 
-        .cs-picture2 {
+        .picture2 {
             bottom: 0;
             right: 0;
             /* 6px - 12px */
@@ -64,22 +64,22 @@
             box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 40px;
         }
 
-        .cs-right {
+        .right {
             margin: auto;
             max-width: calc(542 / 16 * 1rem);
         }
 
-        .cs-topper {
+        .topper {
             margin-bottom: calc(4 / 16 * 1rem);
             text-align: left;
         }
 
-        .cs-title {
+        .title {
             max-width: calc(800 / 16 * 1rem);
             text-align: left;
         }
 
-        .cs-text {
+        .text {
             margin-bottom: calc(16 / 16 * 1rem);
             max-width: calc(750 / 16 * 1rem);
             color: var(--bodyTextColor);
@@ -90,7 +90,7 @@
             }
         }
 
-        .cs-flex-group {
+        .flex-group {
             position: relative;
             border-radius: calc(16 / 16 * 1rem);
             background-color: #f7f7f7;
@@ -98,7 +98,7 @@
             padding: clamp(1rem, 3vw, 2rem);
         }
 
-        .cs-flex-p {
+        .flex-p {
             margin: 0 0 calc(16 / 16 * 1rem);
             /* 14px - 16px */
             font-size: clamp(0.875rem, 1.5vw, 1rem);
@@ -106,7 +106,7 @@
             color: #353535;
         }
 
-        .cs-name {
+        .name {
             display: block;
             margin: 0 0 calc(4 / 16 * 1rem);
             text-transform: uppercase;
@@ -116,14 +116,14 @@
             color: var(--headerColor);
         }
 
-        .cs-job {
+        .job {
             display: block;
             font-size: calc(14 / 16 * 1rem);
             line-height: 1.5em;
             color: #353535;
         }
 
-        .cs-quote-icon {
+        .quote-icon {
             position: absolute;
             bottom: calc(0 / 16 * 1rem);
             /* 16px - 32px */
@@ -133,7 +133,7 @@
             width: clamp(3.75rem, 10vw, 8.5rem);
         }
 
-        .cs-button-solid {
+        .button-solid {
             margin-top: calc(32 / 16 * 1rem);
         }
     }
@@ -142,18 +142,18 @@
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
     #sbs {
-        .cs-container {
+        .container {
             flex-flow: row;
             justify-content: space-between;
             gap: calc(52 / 16 * 1rem);
         }
 
-        .cs-left {
+        .left {
             font-size: min(1.2vw, 1em);
             flex: none;
         }
 
-        .cs-right {
+        .right {
             margin: 0;
         }
     }
@@ -163,41 +163,41 @@
 @media only screen and (min-width: 0rem) {
     body.dark-mode {
         #sbs {
-            .cs-left {
+            .left {
                 &:before,
                 &:after {
                     background: var(--accent);
                 }
             }
 
-            .cs-picture2 {
+            .picture2 {
                 /* 6px - 12px */
                 border: clamp(0.375em, 1.5vw, 0.75em) solid var(--dark);
                 background-color: var(--dark);
             }
 
-            .cs-topper {
+            .topper {
                 color: var(--primaryLight);
             }
 
-            .cs-title,
-            .cs-text,
-            .cs-h3,
-            .cs-flex-p,
-            .cs-name {
+            .title,
+            .text,
+            .h3,
+            .flex-p,
+            .name {
                 color: var(--bodyTextColorWhite);
             }
 
-            .cs-flex-group {
+            .flex-group {
                 background-color: var(--accent);
             }
 
-            .cs-job {
+            .job {
                 opacity: 0.8;
                 color: var(--bodyTextColorWhite);
             }
 
-            .cs-quote-icon {
+            .quote-icon {
                 opacity: 0.2;
             }
         }

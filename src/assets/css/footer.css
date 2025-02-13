@@ -1,0 +1,82 @@
+/*-- -------------------------- -->
+<---           Footer           -->
+<--- -------------------------- -*/
+/* Mobile - 360px - Contains hover state */
+@media only screen and (min-width: 0rem) {
+  #footer {
+    padding: 2.5rem 1rem;
+    background: #1a1a1a;
+  }
+  #footer .container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+  }
+  #footer .ul {
+    padding: 0;
+    margin: auto;
+    display: flex;
+    /* make flexbox arrange top to bottom */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  #footer .li {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+  }
+  #footer .copyright {
+    font-size: 0.9375rem;
+    line-height: 1.5em;
+    margin-top: 1.25rem;
+    color: #a0a3bd;
+    display: block;
+    /* send to first position at the bottom */
+    order: 1;
+    /* prevents flexbox from squishing it */
+    flex: none;
+  }
+  #footer .link {
+    /* 15px - 17px */
+    font-size: clamp(0.9375rem, 2vw, 1.0625rem);
+    line-height: 1.5em;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--bodyTextColorWhite);
+    position: relative;
+  }
+  #footer .link:hover:before {
+    width: 100%;
+  }
+  #footer .link:before {
+    /* top right box */
+    content: "";
+    width: 0%;
+    height: 0.1875rem;
+    background: var(--bodyTextColorWhite);
+    opacity: 1;
+    position: absolute;
+    display: block;
+    bottom: -0.125rem;
+    left: 0;
+    transition: width 0.3s;
+  }
+}
+/* Tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+  #footer .ul {
+    flex-direction: row;
+    /* push everything to the left */
+    justify-content: flex-start;
+    /* 44px - 88px */
+  }
+  #footer .copyright {
+    /* marign auto on the left pushes away from the rest of the flex children */
+    margin: 0 0 0 auto;
+    /* send to the right most position */
+    order: 2;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */

@@ -5,9 +5,8 @@
 /* Mobile */
 @media only screen and (min-width: 0rem) {
   :root {
-    --dark: #082032;
-    --medium: #2c394b;
-    --accent: #334756;
+    --dark: #283618;
+    --medium: #606C38;
   }
   body.dark-mode {
     background-color: var(--dark);
