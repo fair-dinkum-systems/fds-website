@@ -539,10 +539,12 @@
 
                 .logo-text-full {
                     display: none;
+                    color: var(--bodyTextColorWhite);
                 }
                 
                 .logo-text-short {
                     display: block;
+                    color: var(--bodyTextColorWhite);
                 }
             }
 
