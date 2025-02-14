@@ -17,19 +17,19 @@ imageAlt: Plot
 
 In 2019, a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction. They developed a model that accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling. 
 
-The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” or “MATR” is probably the most widely used dataset in machine learning for battery modelling and also one of the largest. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
+The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” (or “MATR” after [www.matr.io](https://data.matr.io/) the platform where the data can be accessed) is one of the largest and probably the most widely used dataset in machine learning for battery modelling. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
 
 ![Screenshot 2025-02-12 at 4.58.38 PM.png](attachment:c7edbe5b-2a1d-46d2-a15c-01b9a647b5c6:Screenshot_2025-02-12_at_4.58.38_PM.png)
 
-\*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.
+*\*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.*
 
-✦DiffBat
+*✦DiffBat*
 
-♱*BATTERYML: AN OPEN-SOURCE PLATFORM FOR MACHINE LEARNING ON BATTERY DEGRADATION*
+*♱BATTERYML: AN OPEN-SOURCE PLATFORM FOR MACHINE LEARNING ON BATTERY DEGRADATION*
 
-❋ Our Results
+*❋ Ours*
 
-The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 or *test* and MATR2 or *secondary_test*. As we can see, none of them outperform the linear regression model on both test sets.
+The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 
 For most of the rest of this article we’re going to try to explain why this is by enumerating some of the difficulties we encountered with this data when trying to create our own deep learning model to outperform Severson et al. Hopefully this will save future researchers some frustration.
 
