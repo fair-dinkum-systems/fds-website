@@ -142,6 +142,6 @@ Conclude from all of that what you will.
 **Summary**
 
 Be careful when dealing with this dataset. 
-Like most battery data datasets, it’s inherently inhospitable to deep learning and it has a lot of quirks, all of which take a while to understand properly and if you fail to treat any of these quirks properly your research will end up being invalid.
+Like most battery datasets, it’s inherently inhospitable to deep learning and it has a lot of quirks, all of which take a while to understand properly and if you fail to treat any of these quirks properly your research will end up being invalid.
 Furthermore, many have tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to model it.
 Beware.
