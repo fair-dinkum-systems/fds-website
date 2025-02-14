@@ -43,7 +43,7 @@ None of this is to deride in any way the excellent work of Severson et al. who t
 
 The dataset itself contains only 124 batteries. Each battery has recorded on it an average of 810 cycles with 985 individual data points recorded per cycle across 5 variables. Ultimately however the test sets only require a single prediction per battery: the input is the first 100 cycles of data for that battery, the output is how long it’s going to live for past that point given in cycles.
 
-![did someone say “weird artifacts”?](attachment:748605ce-324d-48c6-9976-21910fdcefb2:Screenshot_2025-02-12_at_10.13.41_AM.png)
+![](/assets/images/blog/abx.png)
 
 did someone say “weird artifacts”?
 
@@ -53,25 +53,27 @@ did someone say “weird artifacts”?
 
 The dataset was collected in 3 batches, b1, b2 and b3 representing 3 distinct batches of batteries plugged into the researcher’s potentiostat and cycled until death. The training set and the test set (MATR1) are made up of a combination of b1 and b2, MATR2 is the entirety of b3. Unfortunately these batches have very different properties, starting with the target.
 
-![Screenshot 2025-02-12 at 10.27.20 AM.png](attachment:4468b3cf-d968-4c62-972a-002d6b416aa2:Screenshot_2025-02-12_at_10.27.20_AM.png)
+![Screenshot 2025-02-12 at 10.27.20 AM.png](/assets/images/blog/asdf.png)
 
 Above we have plotted the remaining useful life of each battery at cycle 100 against the so called “Qdlin delta variance” feature used by Severson et al. The linearity of this relationship is promising, but clearly the batching itself has had a very large impact on the target and generalizing is going to be tough.
 
 Another example are the charging curves. Below we have plotted the first portion the recorded charging curves of 10 random batteries taken from each set. 
 
-![Screenshot 2025-02-12 at 10.36.47 AM.png](attachment:f94eb829-8240-4365-afec-c780b463d548:Screenshot_2025-02-12_at_10.36.47_AM.png)
+![Screenshot 2025-02-12 at 10.36.47 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.36.47-am.png)
 
 As well as being offset from one another, we can see that batteries from b3 have a much smoother, essentially linear slope, while the other two battery sets have a much bumpier, but still monotonic profile. A zoomed in section is given below.
 
-![Screenshot 2025-02-12 at 10.39.08 AM.png](attachment:9b506680-a9ed-46b0-87a7-c3f467e8b0d3:Screenshot_2025-02-12_at_10.39.08_AM.png)
+![Screenshot 2025-02-12 at 10.39.08 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.39.08-am.png)
 
 In fact what you’re *probably* supposed to do when using this data is not take the raw charging curve values as they are given, but interpolate them against the given time value `'t'` for each cycle first. Here we plot most of the charging cycle with this interpolation performed. Now all 3 sets are smooth and linear, but we can still perceive clear differences in distribution. 
 
-![Screenshot 2025-02-12 at 10.45.36 AM.png](attachment:221e865a-90b9-4e7e-85e8-6bca28c3ddf1:Screenshot_2025-02-12_at_10.45.36_AM.png)
+![Screenshot 2025-02-12 at 10.45.36 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.45.36-am.png)
 
-![Screenshot 2025-02-12 at 10.50.17 AM.png](attachment:5d8cd790-2904-444a-a37a-0e2e6e3a4b43:Screenshot_2025-02-12_at_10.50.17_AM.png)
+![Screenshot 2025-02-12 at 10.50.17 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.50.17-am.png)
 
-![output.png](attachment:a8a92848-c341-438c-a6e7-35749d22047f:output.png)
+And for good measure here are the means and standard deviations of the other 4 variables similarly interpolated over time.
+
+![output.png](/assets/images/blog/output-1-.png)
 
 Why the charging data would be better synced with time in the 3rd batch but not the other two remains a mystery, but many such differences exist between sets. Rather than enumerate every single difference we trained an XGBoost model to classify the 3 sets. Across 8 seeds it reaches 100% accuracy at ___ samples per set.
 
@@ -81,13 +83,13 @@ Finally, differing sets aside the data contains a lot of very obvious structures
 
 Different batteries are charged in different ways and the the charging strategies obvious to see in the data. Below we plot the voltage curves of two different batteries at the 100th cycle. In one case the battery was charged at 8C till it reached 25% capacity and then switched to 3.6C. The other battery was charged at 5.6C till 36% and then switched to 4.3C. The original authors this to demonstrate that their results generalized across different charging strategies, though each battery always retains the same charging strategy.
 
-![and what about that little bump at the end for b3c12? who knows what that’s about…](attachment:483f3e6b-d40e-4c31-a904-b60e47f5afcf:Screenshot_2025-02-12_at_12.34.22_PM.png)
+![and what about that little bump at the end for b3c12? who knows what that’s about…](/assets/images/blog/screenshot-2025-02-12-at-12.34.22-pm.png)
 
 and what about that little bump at the end for b3c12? who knows what that’s about…
 
 Certain charging strategies are highly correlated with the target, here are all the different charging strategies plotted against how long their average battery lasted.
 
-![rul-bars.png](attachment:49ab60a7-087d-4047-8d85-77497aa5b61e:rul-bars.png)
+![rul-bars.png](/assets/images/blog/rul-bars-1-.png)
 
 Orange bars indicate that only one battery had this charging strategy, which accounts for all batteries in b2. Charging strategies are both related to the target and very obvious in the input. it’s quite likely that deep learning models will rely on these when making predictions even though they are not shared across sets.
 Another example: the voltage curve interpolated over time:
