@@ -21,7 +21,7 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 ![Screenshot 2025-02-12 at 4.58.38 PM.png](attachment:c7edbe5b-2a1d-46d2-a15c-01b9a647b5c6:Screenshot_2025-02-12_at_4.58.38_PM.png)
 
-*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.
+\*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.
 
 ✦DiffBat
 
@@ -92,13 +92,13 @@ Certain charging strategies are highly correlated with the target, here are all 
 Orange bars indicate that only one battery had this charging strategy, which accounts for all batteries in b2. Charging strategies are both related to the target and very obvious in the input. it’s quite likely that deep learning models will rely on these when making predictions even though they are not shared across sets.
 Another example: the voltage curve interpolated over time:
 
-![Screenshot 2025-02-12 at 12.53.03 PM.png](attachment:47c5dbfb-0a16-4abe-97aa-8cbfd3bbdaa5:Screenshot_2025-02-12_at_12.53.03_PM.png)
+![Screenshot 2025-02-12 at 12.53.03 PM.png](/assets/images/blog/b.png)
 
 This plot contains one voltage curve for each battery colored according to the lifespan of the battery. We can see that:
 
-- there is a large variation in when exactly the charging and discharging processes start and end which presumably has more to do with the specifics of the potentiostat configuration than anything else. these seem to be around 6 mysterious but distinct groupings.
-- the exact start and end times have a big impact on the shape of the curve
-- there is clearly some association between the start and end times and the target
+* there is a large variation in when exactly the charging and discharging processes start and end which presumably has more to do with the specifics of the potentiostat configuration than anything else. these seem to be around 6 mysterious but distinct groupings.
+* the exact start and end times have a big impact on the shape of the curve
+* there is clearly some association between the start and end times and the target
 
 There are many more similar examples, suffice to say that success in modelling this dataset ultimately has as much to do with the chemistry of batteries as it does to do with how you choose to deal with these specific quirks of the data, quirks which likely will not appear in other similar datasets or the real world.
 
@@ -123,7 +123,7 @@ Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stoo
 ### The Dual-Stream ViT ESA Model (alternative)
 
 This model was introduced by Liu et al in 2024, it uses a sophisticated preprocessing pipeline to break the battery features up into delta features and normal features and a twin-bodied transformer to process it. 
-Their results are good, excellent in fact, achieving ~15 cycle RMSE, which is a ~11x error reduction compared to Severson et al. These are the kinds of results that deep learning promised us.
+Their results are good, excellent in fact, achieving \~15 cycle RMSE, which is a \~11x error reduction compared to Severson et al. These are the kinds of results that deep learning promised us.
 
 **INSERT THE GRAPH THEY CREATED**
 
