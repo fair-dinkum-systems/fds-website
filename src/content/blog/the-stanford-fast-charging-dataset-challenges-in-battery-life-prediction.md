@@ -13,65 +13,41 @@ tags:
 image: /assets/images/blog/screenshot_2025-02-11_at_11.03.50_am.png
 imageAlt: Plot
 ---
-# The Stanford Fast Charging Dataset: Challenges in Battery Life Prediction
+# ML Researchers: Beware the Stanford Fast Charging Battery Dataset
 
-In the world of battery technology, accurate prediction of Remaining Useful Life (RUL) is a holy grail. The Stanford Fast Charging Dataset, released in 2019, has been a benchmark for many researchers in this field. However, our analysis reveals some surprising insights about this dataset and its applicability to real-world battery life prediction.
+In 2019, a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction. They developed a model that accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling.
 
-## The Unbeaten Linear Regression Model
+The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” or “MATR” is probably the most widely used dataset in machine learning for battery modelling and also one of the largest. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
 
-Perhaps the most startling revelation is that since 2019, **no deep learning model has outperformed the original linear regression model** presented with the Stanford Fast Charging Dataset. This fact alone raises several questions about the dataset's suitability for advanced machine learning techniques.
 
-### The Original Paper: Not Quite "Machine Learning"
 
-The original paper claimed to use machine learning techniques. However, upon closer inspection, it becomes clear that deep learning methods were not employed. The success of a simple linear regression model suggests that the relationship between the features and the target variable (battery life) in this dataset might be predominantly linear.
 
-## Dataset Limitations for Machine Learning
 
-Several factors make the Stanford Fast Charging Dataset challenging for machine learning applications:
 
-1. **Limited Sample Size**: The dataset contains only 124 batteries. This small sample size makes it difficult for complex models to generalize effectively.
-2. **Heterogeneous Distribution**: The dataset is divided into three sets, each with significantly different distributions. This heterogeneity can lead to problems in model training and validation.
-3. **Data Artifacts**: We've observed some peculiar artifacts in the data. These inconsistencies can lead to models learning these artifacts rather than genuine patterns in battery degradation.
 
-## The Artifact Management Trap
 
-Researchers who appear to have success with this dataset often do so by carefully managing these artifacts. However, this approach is problematic for two reasons:
 
-1. It doesn't necessarily translate to real-world applications.
-2. The resulting models may not perform well on other datasets.
 
-In essence, success on this dataset alone doesn't necessarily equate to advancing the field of battery life prediction.
 
-## Review of Recent Research
 
-We've analyzed several papers that attempted to improve upon the original results:
+\*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.
 
-1. Paper A (2020): Used a complex neural network architecture but failed to account for the dataset's inherent limitations.
-2. Paper B (2021): Employed ensemble methods but couldn't significantly outperform the linear regression baseline.
-3. Paper C (2022): Attempted to use transfer learning, but the heterogeneity of the dataset posed significant challenges.
+✦DiffBat
 
-These studies, while innovative, highlight the difficulties in extracting more predictive power from this particular dataset.
+♱*BATTERYML: AN OPEN-SOURCE PLATFORM FOR MACHINE LEARNING ON BATTERY DEGRADATION*
 
-## Beyond Stanford: Other Datasets for RUL Estimation
+❋ Our Results
 
-While the Stanford Fast Charging Dataset has its limitations, there are other promising datasets in the field:
+The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 or *test* and MATR2 or *secondary_test*. As we can see, none of them outperform the linear regression model on both test sets.
 
-1. **NASA Prognostics Data Repository**: Offers a larger sample size and more consistent data collection methods.
-2. **Battery Data Genome Project**: Provides a diverse range of battery chemistries and usage patterns.
-3. **CALCE Battery Research Group Dataset**: Includes data from various types of batteries under different operating conditions.
+For most of the rest of this article we’re going to try to explain why this is by enumerating some of the difficulties we encountered with this data when trying to create our own deep learning model to outperform Severson et al. Hopefully this will save future researchers some frustration.
 
-These datasets often provide:
+### Why Is The Stanford Fast Charging Battery Dataset So Difficult?
 
-* Larger sample sizes
-* More consistent data collection methods
-* A wider range of battery types and usage scenarios
+The Stanford Fast Charging Dataset presents several challenges that make it inhospitable to deep learning: it has a small sample size, its splits have widely different distributions and the data contains many strange artifacts that are liable to confuse deep learning models.
 
-## Conclusion
+None of this is to deride in any way the excellent work of Severson et al. who take pains to document the minutiae of their data collection process. Six years later this dataset is still probably one of the top 3 best datasets for modelling batteries with machine learning. The issue seems to be that collecting battery charging data is an inherently very finicky and artifact-prone process.
 
-The Stanford Fast Charging Dataset, while groundbreaking in 2019, has revealed its limitations for advanced machine learning techniques in battery life prediction. As we move forward, it's crucial to develop and use datasets that better represent the complexities of real-world battery usage and degradation.
+**Small Sample Size**
 
-At Fair Dinkum Systems, we're committed to pushing the boundaries of battery life prediction. We believe that by combining cutting-edge machine learning techniques with high-quality, representative datasets, we can achieve significant breakthroughs in this critical field.
-
-Stay tuned for our upcoming posts where we'll dive deeper into our approach to battery life prediction and our latest research findings!
-
-Be aware.
+The dataset itself contains only 124 batteries. Each battery has recorded on it an average of 810 cycles with 985 individual data points recorded per cycle across 5 variables. Ultimately however the test sets only require a single prediction per battery: the input is the first 100 cycles of data for that battery, the output is how long it’s going to live for past that point given in cycles.
