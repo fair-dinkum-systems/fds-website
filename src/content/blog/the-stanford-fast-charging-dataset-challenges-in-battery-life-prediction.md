@@ -109,6 +109,8 @@ This plot contains one voltage curve for each battery colored according to the l
 
 There are many more similar examples, suffice to say that success in modelling this dataset ultimately has as much to do with the chemistry of batteries as it does to do with how you choose to deal with these specific quirks of the data collection process, quirks which likely will not appear in other similar datasets or the real world.
 
+## Recent Findings
+
 Despite these challenges, some research papers have attempted to apply deep learning to this dataset, often claiming to significantly outperform Severson et al’s baseline. Let’s take a look at some of these approaches and our findings after closer scrutiny.
 
 ### Dual-Stream ViT ESA
