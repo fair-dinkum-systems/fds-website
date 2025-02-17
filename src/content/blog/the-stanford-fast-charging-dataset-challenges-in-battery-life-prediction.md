@@ -97,7 +97,6 @@ Certain charging strategies are highly correlated with the target, here are all 
 
 Orange bars indicate that only one battery had this charging strategy, which accounts for all batteries in b2. Charging strategies are both related to the target and very obvious in the input. It’s quite likely that deep learning models will rely on these when making predictions even though they are not shared across sets.
 
-
 Another example: the voltage curve interpolated over time:
 
 ![Screenshot 2025-02-12 at 12.53.03 PM.png](/assets/images/blog/b.png)
@@ -110,38 +109,42 @@ This plot contains one voltage curve for each battery colored according to the l
 
 There are many more similar examples, suffice to say that success in modelling this dataset ultimately has as much to do with the chemistry of batteries as it does to do with how you choose to deal with these specific quirks of the data collection process, quirks which likely will not appear in other similar datasets or the real world.
 
-**Summary**
+Despite these challenges, some research papers have attempted to apply deep learning to this dataset, often claiming to significantly outperform Severson et al’s baseline. Let’s take a look at some of these approaches and our findings after closer scrutiny.
 
-In conclusion, we have listed a few reasons small sample size, diverse distributions and data artifacts why this dataset is difficult to use for deep learning. Researchers dealing with this dataset firsthand will no doubt discover many more.
+### Dual-Stream ViT ESA
 
-### Recent findings
+![](/assets/images/blog/dsvitesa.png)
 
-Despite these challenges, there are no shortage of research papers applying deep learning to this dataset. In fact, recent papers have claimed to significantly outperform Severson et al. Here we will present our findings having read every notable example of such papers, and attempted to re-implement the two most promising examples.
+Introduced by Liu et al in 2024, the Dual-Stream ViT-ESA Model uses a creative preprocessing pipeline to break the battery features up into delta features and standard features, feeding the data through two vision transformers. They reported a remarkably low RMSE of approximately 25 cycles with only 15 cycles, which got us all excited about the promises of deep learning and attempted to validate their findings.
 
-1. **Dual-Stream ViT-ESA** – This paper lacks sufficient transparency in how its results were achieved, making it difficult to verify the claimed performance improvements.
-2. **BatLiNet** – This model appears to achieve better performance, but only by carefully managing the dataset’s artifacts. In reality, it does not truly improve predictive performance in a way that would generalize to other datasets.
+**The catch?** The results they report aren’t achieved on the standard MATR1/MATR2 split. Instead they create their own train/test split and report on that. This would be all well and good if they actually specified their new test set,  released their code, or reported their performance on the standard train/test split. They don’t though, which is what seems a bit odd.
 
-### Revisiting BatLiNet: A Closer Look at Its Issues
+Our team made many attempts to replicate their opinionated data preprocessing and modelling techniques but were never able do better than Severson et al. on the standard train/test split.
 
-Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stood out because its authors provided transparent implementation of their code via CodeOcean, making it possible to reproduce their results. On top of that, their model was also benchmarked using other popular battery datasets in BatteryML commonly referenced by other papers. At first glance, their reported performance appeared drastically impressive. However, upon scrutiny and deeper investigation, we found several critical flaws that undermines its credibility in real-world application.
-
-1. Inconsistent model configuration - We noticed that the authors tuned their model differently for the test and secondary test set. While this might improve their reported results, it is a strategy that wouldn’t translate into real-world scenarios since a single configuration must generalize across all data.
-2. Model Architecture Interpretability - Beyond dataset specific tuning, the model architecture or design choices itself seem arbitrary, lacking theoretical justification that indicates clear advantages over classical modeling methods.
-
-### The Dual-Stream ViT ESA Model (alternative)
-
-This model was introduced by Liu et al in 2024, it uses a sophisticated preprocessing pipeline to break the battery features up into delta features and normal features and a twin-bodied transformer to process it. 
-Their results are good, excellent in fact, achieving \~15 cycle RMSE, which is a \~11x error reduction compared to Severson et al. These are the kinds of results that deep learning promised us.
-
-**INSERT THE GRAPH THEY CREATED**
-
-The catch? The results they report aren’t achieved on the standard MATR1/MATR2 split. Instead they create their own train/test split and report on that. This would be all well and good if they actually specified their new test set,  released their code, or reported their performance on the standard train/test split. They don’t though, which seems a bit odd.
-Our team made many attempts to replicate their opinionated data preprocessing and modelling techniques but were never able do better than Severson et al. on the standard train/test split. 
 Conclude from all of that what you will.
 
-**Summary**
+### **BatLiNet: A Closer Look**
 
-Be careful when dealing with this dataset. 
-Like most battery datasets, it’s inherently inhospitable to deep learning and it has a lot of quirks, all of which take a while to understand properly and if you fail to treat any of these quirks properly your research will end up being invalid.
+![](/assets/images/blog/batlinet.png)
+
+Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stood out because its authors provided transparent implementation of their code via CodeOcean, making it possible to reproduce their results. On top of that, their model was also benchmarked using other popular battery datasets in BatteryML commonly referenced by other papers. At first glance, their reported performance appeared dramatically impressive. However, upon scrutiny and deeper investigation, we found several critical issues that undermines its credibility.
+
+1. Inconsistent model configuration - We noticed that the authors tuned their model differently for the test and secondary test set. While this might have boosted their reported results, it is a strategy that wouldn’t translate into real-world scenarios where a single configuration must generalize.
+2. Model Architecture Interpretability - Beyond dataset specific tuning, the model’s architecture and design choices itself seem somewhat arbitrary, where it lacks clear theoretical explanation of advantages from what they implemented over classical modeling methods.
+
+### DiffBatt: A Novel Approach
+
+![](/assets/images/blog/diffbatt.png)
+
+Recently published, **DiffBatt** model has seemed to have a distinct take on battery degradation prediction and simulation. Introduced in late 2024, DiffBatt leverages diffusion models with classifier-free guidance alongside a transformer architecture to achieve high expressivity and scalability. It functions as both:
+
+* **A Probabilistic Model:** Capturing uncertainties in aging behaviors.
+* **A Generative Model:** Capable of simulating battery degradation over time.
+
+Notably, DiffBatt has demonstrated better results in remaining useful life (RUL) prediction, achieving a mean RMSE of 88 cycles across the test dataset—outperforming many of its contemporaries. Meanwhile, this does not generalize well to the secondary test dataset as they reported higher RMSE over existing papers. Given only modest gains over what we currently have on the test set, we decided not to invest time in reproducing their results. In our view, the theoretical appeal of diffusion models isn’t convincing enough that it will translate into practical benefits on this particular dataset.
+
+### Final Thoughts
+
+Be careful when working with the Stanford Fast Charging Battery Dataset. Like most battery data datasets, it’s undoubtedly challenging for deep learning considering the amount of quirks or artifacts that can easily derail your research if not properly addressed.
+
 Furthermore, many have tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to model it.
-Beware.
