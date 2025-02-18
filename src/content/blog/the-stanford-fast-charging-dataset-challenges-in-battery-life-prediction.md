@@ -132,7 +132,7 @@ Conclude from all of that what you will.
 Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stood out because its authors provided transparent implementation of their code via CodeOcean, making it possible to reproduce their results. On top of that, their model was also benchmarked using other popular battery datasets in BatteryML commonly referenced by other papers. At first glance, their reported performance appeared dramatically impressive. However, upon scrutiny and deeper investigation, we found several critical issues that undermines its credibility.
 
 1. Inconsistent model configuration - We noticed that the authors tuned their model differently for the test and secondary test set. While this might have boosted their reported results, it is a strategy that wouldn’t translate into real-world scenarios where a single configuration must generalize.
-2. Model Architecture Interpretability - Beyond dataset specific tuning, the model’s architecture and design choices itself seem somewhat arbitrary, where it lacks clear theoretical explanation of advantages from what they implemented over classical modeling methods.
+2. Model Architecture Interpretability - Beyond dataset specific tuning, the model’s architecture and design choices itself seem somewhat arbitrary. We just couldn't clearly or intuitively justify the advantages from what they implemented over classical modeling methods.
 
 ### DiffBatt: A Novel Approach
 
@@ -150,3 +150,11 @@ Notably, DiffBatt has demonstrated better results in remaining useful life (RUL)
 Be careful when working with the Stanford Fast Charging Battery Dataset. Like most battery data datasets, it’s undoubtedly challenging for deep learning considering the amount of quirks or artifacts that can easily derail your research if not properly addressed.
 
 Furthermore, many have tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to model it.
+
+### Bibliography
+
+1. Eivazi, H., Hebenbrock, A., Ginster, R., Bl¨omeke, S., Wittek, S., Herrmann, C., . . . Rausch, A. (2024). Diffbatt: A diffusion model for battery degradation prediction and synthesis. arXiv preprint arXiv:2410.23893.
+
+2. Liu, Y., Ahmed, M., Feng, J., Mao, Z., & Chen, Z. (2025). Deep learning-powered lifetime prediction for lithium-ion batteries based on small amounts of charging cycles. IEEE Transactions on Transportation Electrification, 11 (1), 3078-3090. doi: 10.1109/TTE.2024.3434553
+
+3. Zhang, H., Li, Y., Zheng, S., Lu, Z., Gui, X., Xu, W., & Bian, J. (2023). Harnessing intra-and inter-cell differences: A comprehensive approach to precise battery lifespan estimations across conditions. arXiv preprint arXiv:2310.05052.
