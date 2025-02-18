@@ -10,7 +10,7 @@ tags:
   - post
   - machine-learning
   - research
-image: /assets/images/blog/screenshot_2025-02-11_at_11.03.50_am.png
+image: /assets/images/blog/screenshot-2025-02-18-at-12.01.14 pm.png
 imageAlt: Plot
 ---
 # ML Researchers: Beware the Stanford Fast Charging Battery Dataset
@@ -19,15 +19,15 @@ In 2019, a team of researchers from Stanford University made a surprising discov
 
 The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” (or “MATR” after [www.matr.io](https://data.matr.io/) the platform where the data can be accessed) is one of the largest and probably the most widely used dataset in machine learning for battery modelling. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
 
-![Screenshot 2025-02-12 at 4.58.38 PM.png](attachment:c7edbe5b-2a1d-46d2-a15c-01b9a647b5c6:Screenshot_2025-02-12_at_4.58.38_PM.png)
+![Screenshot 2025-02-12 at 4.58.38 PM.png](/assets/images/blog/screenshot-2025-02-18-at-12.01.14 pm.png)
 
-*\*Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.*
-
-*✦DiffBat*
-
-*♱BATTERYML: AN OPEN-SOURCE PLATFORM FOR MACHINE LEARNING ON BATTERY DEGRADATION*
-
-*❋ Ours*
+> *\*  Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.*
+>
+> *✦ DiffBat*
+>
+> *♱ Results reported in BatteryML*
+>
+> *❋ Ours*
 
 The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 
