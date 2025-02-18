@@ -21,7 +21,7 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 ![Screenshot 2025-02-12 at 4.58.38 PM.png](/assets/images/blog/screenshot-2025-02-18-at-12.01.14 pm.png)
 
-> *\*  Batlinet, they reported better results, but we believe they obtained these in error. We have contacted the authors.*
+> *\*  Batlinet, they reported better results, but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2 without any explanation for why this was done. We show the results they get with the default hyperparemeters for both test sets.*
 >
 > *✦ DiffBat*
 >
@@ -154,7 +154,5 @@ Furthermore, many have tried reasonable, up-to-date techniques on this dataset a
 ### Bibliography
 
 1. Eivazi, H., Hebenbrock, A., Ginster, R., Bl¨omeke, S., Wittek, S., Herrmann, C., . . . Rausch, A. (2024). Diffbatt: A diffusion model for battery degradation prediction and synthesis. arXiv preprint arXiv:2410.23893.
-
 2. Liu, Y., Ahmed, M., Feng, J., Mao, Z., & Chen, Z. (2025). Deep learning-powered lifetime prediction for lithium-ion batteries based on small amounts of charging cycles. IEEE Transactions on Transportation Electrification, 11 (1), 3078-3090. doi: 10.1109/TTE.2024.3434553
-
 3. Zhang, H., Li, Y., Zheng, S., Lu, Z., Gui, X., Xu, W., & Bian, J. (2023). Harnessing intra-and inter-cell differences: A comprehensive approach to precise battery lifespan estimations across conditions. arXiv preprint arXiv:2310.05052.
