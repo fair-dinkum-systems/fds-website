@@ -29,10 +29,6 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 *❋ --> Ours*
 
-
-
-
-
 The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 
 This article is our best attempt to explain why linear regression is still the best performing algorithm on this dataset. We will start by covering some of the difficulties we encountered while training our own models, and then highlighting some of the issues with recent publications involving MATR.
@@ -87,7 +83,7 @@ And for good measure here are the means and standard deviations of the other 4 v
 
 A thorough analysis will reveal that the sets have distinct profiles. As a fun little aside we trained an XGBoost model to classify the 3 sets by splitting the set in half training on one half of each set and attempting to classify the remainder. In the graph below we see that MATR1 is very easy to distinguish from the other 2 sets after with only 16 samples (CLO is another subset of this data used in the literature, it is made up of the existing 3 sets). 
 
-
+![](/assets/images/blog/image.png)
 
 **Data Artifacts** 
 
@@ -137,13 +133,11 @@ Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stoo
 
 ![](/assets/images/blog/screenshot-2025-02-20-at-3.11.04 pm.png)
 
+However, upon scrutiny we feel we cannot rely on their reported results. After downloading and running the provided code we noticed that the authors manually set an important hyperparameter when performing the MATR-2 test. This parameter: alpha, which governs how much weighting to give predictions relating to each stream of their neural network is set to the default 0.5 for all the other tests they perform, but for this test it is set to 0.2. We ran their code with the hyperparameter consistently set to 0.5 and achieved significantly worse results for MATR-2, results given below over 8 trials using the same seeds as the original paper.
 
-
-However, upon scrutiny we feel we cannot rely on their reported results. After downloading and running the provided code we noticed that the authors manually set an important hyperparameter when performing the MATR-2 test. This parameter: alpha, which governs how much weighting to give predictions relating to each stream of their neural network is set to the default 0.5 for all the other tests they perform, but for this test it is set to 0.2. We ran their code with the hyperparameter consistently set to 0.5 and achieved significantly worse results for MATR-2. 
+![](/assets/images/blog/replicate.png)
 
 This decision is not mentioned in the paper, something that the authors acknowledged when we contacted them directly. The scores achieved when we avoid manually setting hyper-parameters are still better than Severson et al.'s linear regression model, but by <1%.
-
-
 
 ### DiffBatt: A Novel Approach
 
