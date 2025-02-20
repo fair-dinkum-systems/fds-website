@@ -158,7 +158,7 @@ Notably, DiffBatt has demonstrated better results in remaining useful life (RUL)
 
 ### Final Thoughts
 
-Be careful when working with the Stanford Fast Charging Battery Dataset. It is very hard to get deep learning to perform well on this dataset due to its small sample size, test split diversity and data collection artifacts. Many clever researchers have already tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to grok it any better than the original linear regression model. 
+Be careful when working with the Stanford Fast Charging Battery Dataset. It is very hard to get deep learning approaches to perform well on this dataset due to its small sample size, test split diversity and data collection artifacts. Many clever researchers have already tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to grok it any better than the original linear regression model. 
 
 ### Bibliography
 
