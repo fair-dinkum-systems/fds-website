@@ -15,17 +15,17 @@ imageAlt: Plot
 ---
 # ML Researchers: Beware the Stanford Fast Charging Battery Dataset
 
-In 2019, a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction. They developed a model that accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling. 
+In 2019, a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction\[2]. They accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling. 
 
 The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” (or “MATR” after [www.matr.io](https://data.matr.io/) the platform where the data can be accessed) is one of the largest and probably the most widely used dataset in machine learning for battery modelling. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
 
 ![Screenshot 2025-02-12 at 4.58.38 PM.png](/assets/images/blog/screenshot-2025-02-18-at-12.01.14 pm.png)
 
-*\* --> \[4]. The authors reported better results, but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2. No justification for why this was done was included in their publication so we show the results they get with the default hyperparemeters for both test sets.*
+*\* --> \[4]. The authors reported better results but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2. Their publication does not mention or justify this so we show the results they get with the default hyperparemeters for both test sets. We have mentioned this to the authors.*
 
-*✦  -->\[1]*
+*✦  --> \[1]*
 
-*♱ --> \[3]*
+*♱ --> \[3]* 
 
 *❋ --> Ours*
 
@@ -35,7 +35,7 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 
-This article is our best attempt to explain why good old linear regression is still the best performing algorithm on this dataset. We will start by enumerating some of the difficulties we encountered while training our own models, and then highlighting some of the issues with recent publications involving MATR.
+This article is our best attempt to explain why linear regression is still the best performing algorithm on this dataset. We will start by covering some of the difficulties we encountered while training our own models, and then highlighting some of the issues with recent publications involving MATR.
 
 ### Why is MATR so Difficult for Deep Learning Models?
 
@@ -45,17 +45,17 @@ The Stanford Fast Charging Dataset presents several challenges that make it inho
 * its splits have widely different distributions
 * the data contains many strange artifacts that are liable to confuse complex models 
 
-None of this is to deride the excellent work of Severson et al. who take pains to document the minutiae of their data collection process. Six years later this dataset is still one of the largest and probably one of the best datasets for modelling batteries with machine learning. The issue seems to be that collecting battery charging data is an inherently very finicky and artifact-prone process.
+None of this is to deride the excellent work of Severson et al. \[2] who take pains to document the minutiae of their data collection process. Six years later this dataset is still one of the largest and probably one of the best datasets for modelling batteries with machine learning. The issue seems to be that collecting battery charging data is an inherently very finicky and artifact-prone process.
 
 **Small Sample Size**
 
-The dataset itself contains only 124 batteries. Each battery is cycled until it reaches 80% capacity which happens on average after 810 cycles. Measurements for 5 different variables Temperature, Current, Voltage, Charge Amount and Discharge Amount are taken throughout each cycle with an average of 985 measurements taken per cycle on average for each variable. That's ~500 million individual datapoints in total.
+The dataset itself contains only 124 batteries. Each battery is cycled until it reaches 80% capacity (at which point, by convention a battery is considered "dead") which happens on average after 810 cycles. Measurements for 5 different variables Temperature, Current, Voltage, Charge Amount and Discharge Amount are taken throughout each cycle with an average of 985 measurements taken per cycle on average for each variable. That's ~500 million individual data points in total.
 
 ![](/assets/images/blog/abx.png)
 
-Ultimately however the test sets only require a single prediction per battery: the input is the first 100 cycles of data for that battery, the output is how long it’s going to live for past that point given in cycles. Using a naive approach this amounts to merely 124 datapoints, with only 43 of theses being in the training set. Not enough to train any kind of neural network.
+Ultimately however the test sets only require a single prediction per battery: the input is the first 100 cycles of data for that battery, the output is how long it’s going to live for past that point given in cycles. Using a naive approach this amounts to merely 124 data points, with only 43 of theses being in the training set. Not enough to train any large, modern neural network.
 
-Given this, the whole battery chemistry aspect of this data becomes less important. The really important problem for ML researchers when dealing with MATR becomes: how do we overcome the small number of labels? There are many possible answers, but none of them are simple or guaranteed to work.
+Given this, the whole battery chemistry aspect of this dataset becomes less important. The really important problem for ML researchers when dealing with MATR becomes: how do we overcome the small number of labels? There are many possible answers (transfer learning, data augmentation, etc) but none of them are simple or guaranteed to work.
 
 **Diverse Batch Characteristics**
 
