@@ -149,18 +149,16 @@ This decision is not mentioned in the paper, something that the authors acknowle
 
 ![](/assets/images/blog/diffbatt.png)
 
-Recently published, **DiffBatt**\[1] seemed to have a distinct take on battery degradation prediction and simulation. Introduced in late 2024, DiffBatt leverages diffusion models with classifier-free guidance alongside a transformer architecture to achieve high expressivity and scalability. It functions as both:
+Introduced in late 2024, DiffBatt leverages diffusion models with classifier-free guidance alongside a transformer architecture to achieve high expressivity and scalability. It functions as both:
 
 * **A Probabilistic Model:** Capturing uncertainties in aging behaviors.
 * **A Generative Model:** Capable of simulating battery degradation over time.
 
-Notably, DiffBatt has demonstrated better results in remaining useful life (RUL) prediction, achieving a mean RMSE of 88 cycles across the test dataset—outperforming many of its contemporaries. Meanwhile, this does not generalize well to the secondary test dataset as they reported higher RMSE over existing papers. Given only modest gains over what we currently have on the test set, we decided not to invest time in reproducing their results. In our view, the theoretical appeal of diffusion models isn’t convincing enough that it will translate into practical benefits on this particular dataset.
+Notably, DiffBatt has demonstrated better results in remaining useful life (RUL) prediction, achieving a mean RMSE of 88 cycles across the test dataset—outperforming many of its contemporaries. However, it does not generalize well to MATR2, achieving an RMSE of 235. As appealing as a diffusion approach might be, in practical terms we are still far behind Severson et al.'s linear regression model for this dataset.
 
 ### Final Thoughts
 
-Be careful when working with the Stanford Fast Charging Battery Dataset. Like most battery data datasets, it’s undoubtedly challenging for deep learning considering the amount of quirks or artifacts that can easily derail your research if not properly addressed.
-
-Furthermore, many have tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to model it.
+Be careful when working with the Stanford Fast Charging Battery Dataset. It is very hard to get deep learning to perform well on this dataset due to its small sample size, test split diversity and data collection artifacts. Many clever researchers have already tried reasonable, up-to-date techniques on this dataset and none have succeeded convincingly to grok it any better than the original linear regression model. 
 
 ### Bibliography
 
