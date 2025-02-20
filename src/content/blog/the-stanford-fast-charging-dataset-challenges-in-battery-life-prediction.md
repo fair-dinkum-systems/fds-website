@@ -15,7 +15,7 @@ imageAlt: Plot
 ---
 # ML Researchers: Beware the Stanford Fast Charging Battery Dataset
 
-In 2019, a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction\[2]. They accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling. 
+In 2019 a team of researchers from Stanford University made a surprising discovery in battery lifetime prediction \[5]. They accurately foretasted the lifespan of lithium-ion phosphate batteries under fast-charging conditions using a simple linear regression model. With >2,000 citations this paper is considered a seminal work in the field of machine learning for battery modelling. 
 
 The dataset released alongside this paper, the so called “Stanford Fast Charging Battery Dataset” (or “MATR” after [www.matr.io](https://data.matr.io/) the platform where the data can be accessed) is one of the largest and probably the most widely used dataset in machine learning for battery modelling. However despite the rapid advancements in machine learning since 2019, **no deep learning approach has ever convincingly outperformed the original linear regression model on this dataset.**
 
@@ -85,13 +85,15 @@ And for good measure here are the means and standard deviations of the other 4 v
 
 ![output.png](/assets/images/blog/output-1-.png)
 
-A thorough analysis will reveal that the sets have distinct profiles. As a fun little aside we trained an XGBoost model to classify the 3 sets by splitting the set in half and training on one half. In the graph below we see that MATR1 is very easy to distinguish from the other 2 sets with only 16 samples. given to train on.
+A thorough analysis will reveal that the sets have distinct profiles. As a fun little aside we trained an XGBoost model to classify the 3 sets by splitting the set in half training on one half of each set and attempting to classify the remainder. In the graph below we see that MATR1 is very easy to distinguish from the other 2 sets after with only 16 samples (CLO is another subset of this data used in the literature, it is made up of the existing 3 sets). 
+
+
 
 **Data Artifacts** 
 
-Finally the data contains a lot of very obvious structures which are correlated with the target. We will merely give the most obvious examples here, which are charging artifacts.
+Finally the data contains a some very obvious structures which are correlated with the target. A good example are charging artifacts.
 
-Different batteries are charged in different ways and the the charging strategies are obvious to see in the data. Below we plot the voltage curves of two different batteries at the 100th cycle. In one case the battery was charged at 8C till it reached 25% capacity and then switched to 3.6C. The other battery was charged at 5.6C till 36% and then switched to 4.3C. The original authors this to demonstrate that their results generalized across different charging strategies, though each battery always retains the same charging strategy.
+Different batteries are charged in different ways and the the charging strategies are obvious to see in the data. Below we plot the voltage curves of two different batteries at the 100th cycle. In one case the battery was charged at 8C till it reached 25% capacity and then switched to 3.6C. The other battery was charged at 5.6C till 36% capacity and then switched to 4.3C. Severson et al. did this to demonstrate that their results generalized across different charging strategies, though each battery always retains the same charging strategy throughout its lifespan.
 
 ![and what about that little bump at the end for b3c12? who knows what that’s about…](/assets/images/blog/screenshot-2025-02-12-at-12.34.22-pm.png)
 
@@ -111,38 +113,43 @@ This plot contains one voltage curve for each battery colored according to the l
 * the exact start and end times have a big impact on the shape of the curve
 * there is clearly some association between the start and end times and the target, with the outlying purple cluster corresponding to b2
 
-There are many more similar examples, suffice to say that success in modelling this dataset ultimately has as much to do with the chemistry of batteries as it does to do with how you choose to deal with these specific quirks of the data collection process, quirks which likely will not appear in other similar datasets or the real world.
+Due to data artifacts like this, success in modelling this dataset ultimately has as much to do with the chemistry of batteries as it does with how you choose to deal with these specific quirks of the data collection process, quirks which likely will not appear in other similar datasets or the real world.
 
 ## Recent Findings
 
-Despite these challenges, some research papers have attempted to apply deep learning to this dataset, often claiming to significantly outperform Severson et al’s baseline. Let’s take a look at some of these approaches and our findings after closer scrutiny.
+Despite these challenges, some research papers have attempted to apply deep learning to this dataset, often claiming to significantly outperform Severson et al’s baseline. We will show the papers we found to be the most useful and relevant to the task of predicting battery remaining useful life.
 
 ### Dual-Stream ViT ESA
 
 ![](/assets/images/blog/dsvitesa.png)
 
-Introduced by Liu et al in 2024, the Dual-Stream ViT-ESA Model uses a creative preprocessing pipeline to break the battery features up into delta features and standard features, feeding the data through two vision transformers. They reported a remarkably low RMSE of approximately 25 cycles with only 15 cycles, which got us all excited about the promises of deep learning and attempted to validate their findings.
+Introduced by Liu et al in 2024\[2], the Dual-Stream ViT-SAE Model uses a creative preprocessing pipeline to break the battery features up into delta features and standard features, feeding the data through two vision transformers. They reported a remarkably low RMSE of approximately 25 cycles on the test set which is by far the most impressive result we are aware of and implies that deep learning approaches can effectively model this data.
 
-**The catch?** The results they report aren’t achieved on the standard MATR1/MATR2 split. Instead they create their own train/test split and report on that. This would be all well and good if they actually specified their new test set,  released their code, or reported their performance on the standard train/test split. They don’t though, which is what seems a bit odd.
+However, the results they report aren’t achieved on the standard MATR1/MATR2 split. Instead they create their own train/test split and report on that. This would be all well and good if they actually specified their new test set, released their code, or reported their performance on the standard train/test split. They don’t though, which seems a little unusual.
 
-Our team made many attempts to replicate their opinionated data preprocessing and modelling techniques but were never able do better than Severson et al. on the standard train/test split.
-
-Conclude from all of that what you will.
+Our team made many attempts to replicate their opinionated data preprocessing and modelling techniques but were never able do better than Severson et al. on the standard train/test split. We will leave the reader to investigate this further.
 
 ### **BatLiNet: A Closer Look**
 
 ![](/assets/images/blog/batlinet.png)
 
-Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stood out because its authors provided transparent implementation of their code via CodeOcean, making it possible to reproduce their results. On top of that, their model was also benchmarked using other popular battery datasets in BatteryML commonly referenced by other papers. At first glance, their reported performance appeared dramatically impressive. However, upon scrutiny and deeper investigation, we found several critical issues that undermines its credibility.
+Among the recent papers claiming to have surpassed the 2019 model, BatLiNet stood out because its authors provided transparent implementation of their code via CodeOcean, making it possible to reproduce their results. On top of that, their model was benchmarked using other popular battery datasets in microsoft's [BatteryML](https://github.com/microsoft/BatteryML) repository\[4]. At first glance (see "BatLiNet" below), while only a little bit better than Severson et al.'s linear regression model, their results represented a significant improvement. 
 
-1. Inconsistent model configuration - We noticed that the authors tuned their model differently for the test and secondary test set. While this might have boosted their reported results, it is a strategy that wouldn’t translate into real-world scenarios where a single configuration must generalize.
-2. Model Architecture Interpretability - Beyond dataset specific tuning, the model’s architecture and design choices itself seem somewhat arbitrary. We just couldn't clearly or intuitively justify the advantages from what they implemented over classical modeling methods.
+![](/assets/images/blog/screenshot-2025-02-20-at-3.11.04 pm.png)
+
+
+
+However, upon scrutiny we feel we cannot rely on their reported results. After downloading and running the provided code we noticed that the authors manually set an important hyperparameter when performing the MATR-2 test. This parameter: alpha, which governs how much weighting to give predictions relating to each stream of their neural network is set to the default 0.5 for all the other tests they perform, but for this test it is set to 0.2. We ran their code with the hyperparameter consistently set to 0.5 and achieved significantly worse results for MATR-2. 
+
+This decision is not mentioned in the paper, something that the authors acknowledged when we contacted them directly. The scores achieved when we avoid manually setting hyper-parameters are still better than Severson et al.'s linear regression model, but by <1%.
+
+
 
 ### DiffBatt: A Novel Approach
 
 ![](/assets/images/blog/diffbatt.png)
 
-Recently published, **DiffBatt** model has seemed to have a distinct take on battery degradation prediction and simulation. Introduced in late 2024, DiffBatt leverages diffusion models with classifier-free guidance alongside a transformer architecture to achieve high expressivity and scalability. It functions as both:
+Recently published, **DiffBatt**\[1] seemed to have a distinct take on battery degradation prediction and simulation. Introduced in late 2024, DiffBatt leverages diffusion models with classifier-free guidance alongside a transformer architecture to achieve high expressivity and scalability. It functions as both:
 
 * **A Probabilistic Model:** Capturing uncertainties in aging behaviors.
 * **A Generative Model:** Capable of simulating battery degradation over time.
@@ -161,3 +168,4 @@ Furthermore, many have tried reasonable, up-to-date techniques on this dataset a
 2. \[2] Liu, Y., Ahmed, M., Feng, J., Mao, Z., & Chen, Z. (2025). Deep learning-powered lifetime prediction for lithium-ion batteries based on small amounts of charging cycles. IEEE Transactions on Transportation Electrification, 11 (1), 3078-3090. doi: 10.1109/TTE.2024.3434553
 3. \[3] Zhang, H., Li, Y., Zheng, S., Lu, Z., Gui, X., Xu, W., & Bian, J. (2023). Harnessing intra-and inter-cell differences: A comprehensive approach to precise battery lifespan estimations across conditions. arXiv preprint arXiv:2310.05052.
 4. \[4] Zhang, H., Gui, X., Zheng, S., Lu, Z., Li, Y., & Bian, J. (2024). BatteryML: An Open-source platform for Machine Learning on Battery Degradation. International Conference on Learning Representations (ICLR 2024).
+5. \[5] Severson, K. A., Attia, P. M., Jin, N., Perkins, N., Jiang, B., Yang, Z., Chen, M. H., Aykol, M., Herring, P. K., Fraggedakis, D., Bazant, M. Z., Harris, S. J., Chueh, W. C., & Braatz, R. D. (2019). Data-driven prediction of battery cycle life before capacity degradation. Nature Energy, 4, 383-391.
