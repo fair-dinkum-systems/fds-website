@@ -59,25 +59,25 @@ Given this, the whole battery chemistry aspect of this dataset becomes less impo
 
 **Diverse Batch Characteristics**
 
-The dataset was collected in 3 batches, b1, b2 and b3 representing 3 distinct sets of batteries plugged into Severson et al.'s potentiostat and cycled until death. Multiple months elapsed between each set being plugged in. The training set and MATR1 are made up of a combination of b1 and b2, MATR2 is the entirety of b3. As it turns out these batches have significantly different properties, starting with the target.
+The dataset was collected in 3 batches, b1, b2 and b3 representing 3 sequential groups of 48 or so batteries that were plugged into the same potentiostat and cycled until death. Multiple months elapsed between each set being plugged in and some had to be dropped due to measurement abnormalities. The training set and MATR1 are made up of a combination of b1 and b2, MATR2 is the entirety of b3. As it turns out these batches have significantly divergent properties, starting with the target.
 
 ![Screenshot 2025-02-12 at 10.27.20 AM.png](/assets/images/blog/asdf.png)
 
-Above we have plotted the remaining useful life of each battery at cycle 100 against the so called “Qdlin delta variance” feature used by Severson et al. The linearity of this relationship is promising, but clearly the batching itself has had a very large impact on the target and generalizing is going to be tough.
+Above we have plotted the remaining useful life of each battery at cycle 100 against the so called “Qdlin delta variance” feature used by Severson et al. The linearity of this relationship is promising, but clearly the batching itself has had a large impact on the target and generalizing is going to be tough.
 
 Another example are the charging curves. Below we have plotted the first portion of the charging curves of 10 random batteries taken from each set at cycle 100. 
 
 ![Screenshot 2025-02-12 at 10.36.47 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.36.47-am.png)
 
-As well as each set being offset along the x-axis we can see that batteries from b3 have a much smoother, essentially linear slope, while the other two battery sets have a much bumpier, but still monotonic profile. A zoomed in section is given below to highlight this discrepancy. 
+These lines seem to indicate that each set begins charging at different times during this cycle, i.e. all b2 batteries have already begun charging at the beginning of the plot. We can also see that batteries from b3 have a much smoother, essentially linear slope, while the other two battery sets have a much bumpier, but still monotonic profile. A zoomed in section is given below to highlight this discrepancy. 
 
 ![Screenshot 2025-02-12 at 10.39.08 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.39.08-am.png)
 
-That said, what you’re *probably* supposed to do when using this data is not use the raw charging curve values as they are given, but interpolate them against the given time value `'t'` for each cycle. Here we plot most of the charging cycle with this interpolation performed. Now all 3 sets are smooth and linear, but we can still perceive clear differences in distribution. 
+That said, what researchers are *probably* supposed to do when using this data is not deal with the raw charging curve values as they are given, but instead interpolate them against the given time value `'t'` for each cycle. I.e. create a function which takes the time elapsed at a given step `sn` and returns the charge amount at step `sn` and then use this to generate the charge values across a time period at constant intervals, then use these instead of the initially given charge values. Here we plot most of the charging cycle with this interpolation performed. Now all 3 sets are smooth and linear, but we can still perceive clear differences in distribution. 
 
 ![Screenshot 2025-02-12 at 10.45.36 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.45.36-am.png)
 
-To emphasize this point we plot the means and standard deviations of all 3 sets charging curves...
+To emphasize this point we plot the means and standard deviations of the interpolated charging curves for all 3 sets.
 
 ![Screenshot 2025-02-12 at 10.50.17 AM.png](/assets/images/blog/screenshot-2025-02-12-at-10.50.17-am.png)
 
