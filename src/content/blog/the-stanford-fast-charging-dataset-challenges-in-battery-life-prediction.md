@@ -21,13 +21,17 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 ![Screenshot 2025-02-12 at 4.58.38 PM.png](/assets/images/blog/screenshot-2025-02-18-at-12.01.14 pm.png)
 
-> *\*  Batlinet, they reported better results, but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2 without any explanation for why this was done. We show the results they get with the default hyperparemeters for both test sets.*
->
-> *✦ DiffBat*
->
-> *♱ Results reported in BatteryML*
->
-> *❋ Ours*
+*\* --> \[4]. The authors reported better results, but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2. No justification for why this was done was included in their publication so we show the results they get with the default hyperparemeters for both test sets.*
+
+*✦  -->\[1]*
+
+*♱ --> \[3]*
+
+*❋ --> Ours*
+
+
+
+
 
 The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 
@@ -153,6 +157,7 @@ Furthermore, many have tried reasonable, up-to-date techniques on this dataset a
 
 ### Bibliography
 
-1. Eivazi, H., Hebenbrock, A., Ginster, R., Bl¨omeke, S., Wittek, S., Herrmann, C., . . . Rausch, A. (2024). Diffbatt: A diffusion model for battery degradation prediction and synthesis. arXiv preprint arXiv:2410.23893.
-2. Liu, Y., Ahmed, M., Feng, J., Mao, Z., & Chen, Z. (2025). Deep learning-powered lifetime prediction for lithium-ion batteries based on small amounts of charging cycles. IEEE Transactions on Transportation Electrification, 11 (1), 3078-3090. doi: 10.1109/TTE.2024.3434553
-3. Zhang, H., Li, Y., Zheng, S., Lu, Z., Gui, X., Xu, W., & Bian, J. (2023). Harnessing intra-and inter-cell differences: A comprehensive approach to precise battery lifespan estimations across conditions. arXiv preprint arXiv:2310.05052.
+1. \[1] Eivazi, H., Hebenbrock, A., Ginster, R., Bl¨omeke, S., Wittek, S., Herrmann, C., . . . Rausch, A. (2024). Diffbatt: A diffusion model for battery degradation prediction and synthesis. arXiv preprint arXiv:2410.23893.
+2. \[2] Liu, Y., Ahmed, M., Feng, J., Mao, Z., & Chen, Z. (2025). Deep learning-powered lifetime prediction for lithium-ion batteries based on small amounts of charging cycles. IEEE Transactions on Transportation Electrification, 11 (1), 3078-3090. doi: 10.1109/TTE.2024.3434553
+3. \[3] Zhang, H., Li, Y., Zheng, S., Lu, Z., Gui, X., Xu, W., & Bian, J. (2023). Harnessing intra-and inter-cell differences: A comprehensive approach to precise battery lifespan estimations across conditions. arXiv preprint arXiv:2310.05052.
+4. \[4] Zhang, H., Gui, X., Zheng, S., Lu, Z., Li, Y., & Bian, J. (2024). BatteryML: An Open-source platform for Machine Learning on Battery Degradation. International Conference on Learning Representations (ICLR 2024).
