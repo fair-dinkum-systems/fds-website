@@ -19,12 +19,12 @@ The dataset released alongside this paper, the so called “Stanford Fast Chargi
 
 ![](/assets/images/blog/feb-18-screenshot-from-battery-ml-researchers.png "* --> [4]. The authors reported better results but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2. Their publication does not mention or justify this so we show the results they get with the default hyperparemeters for both test sets. We have mentioned this to the authors.  ✦ --> [1] . ♱ --> [3].  ❋ --> Ours")
 
+\* --> \[4]. The authors reported better results but these results were obtained by manually configuring an important hyperparameter differently for MATR1 vs MATR2. Their publication does not mention or justify this so we show the results they get with the default hyperparemeters for both test sets. We have mentioned this to the authors.  ✦ --> \[1] . ♱ --> \[3].  ❋ --> Ours
+
 The graph above contains the scores, reported or replicated by us, of the best performing models we are aware of on the two test sets of this dataset, known as MATR1 and MATR2. As we can see, none of them outperform the linear regression model on both test sets.
 This article is our best attempt to explain why linear regression is still the best performing algorithm on this dataset. We will start by covering some of the difficulties we encountered while training our own models, and then highlighting some of the issues with recent publications involving MATR.
 
 ## Why is MATR so Difficult for Deep Learning Models?
-
-
 
 The Stanford Fast Charging Dataset presents several challenges that make it inhospitable to deep learning:
 
@@ -45,8 +45,6 @@ Ultimately however the test sets only require a single prediction per battery: t
 Given this, the whole battery chemistry aspect of this dataset becomes less important. The really important problem for ML researchers when dealing with MATR becomes: how do we overcome the small number of labels? There are many possible answers (transfer learning, data augmentation, etc) but none of them are simple or guaranteed to work.
 
 ### Diverse Batch Characteristics
-
-
 
 The dataset was collected in 3 batches, b1, b2 and b3 representing 3 sequential groups of 48 or so batteries that were plugged into the same potentiostat and cycled until death. Multiple months elapsed between each set being plugged in and some had to be dropped due to measurement abnormalities. The training set and MATR1 are made up of a combination of b1 and b2, MATR2 is the entirety of b3. As it turns out these batches have significantly divergent properties, starting with the target.
 
