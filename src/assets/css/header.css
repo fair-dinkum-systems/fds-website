@@ -467,9 +467,11 @@
   }
   body.dark-mode #navigation .logo .logo-text-full {
     display: none;
+    color: var(--bodyTextColorWhite);
   }
   body.dark-mode #navigation .logo .logo-text-short {
     display: block;
+    color: var(--bodyTextColorWhite);
   }
   body.dark-mode #navigation .li-link {
     color: var(--bodyTextColorWhite);
