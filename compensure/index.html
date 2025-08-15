@@ -846,47 +846,67 @@
             const submitUrl = `https://docs.google.com/forms/d/e/1FAIpQLSf7q1wa8tIXAwSpYxte4YWxyqJAdOEafedlKzv9jcF5t93sbg/formResponse?entry.686134287=${encodeURIComponent(email)}&submit=Submit`;
             console.log('Submitting to:', submitUrl);
             
-            // Submit using fetch with no-cors mode like the working test
+            // Test submission by trying without no-cors first to check for errors
             fetch(submitUrl, {
-                method: 'GET',
-                mode: 'no-cors'
-            }).then(() => {
-                console.log('✅ Form submission SUCCESS - no error thrown');
-            }).catch((error) => {
-                console.log('❌ Form submission FAILED:', error);
+                method: 'GET'
+            }).then(response => {
+                if (response.ok || response.status === 0) {
+                    // Success - show success message
+                    this.showSuccess(button, disclaimer);
+                } else {
+                    // Error - show invalid email message
+                    this.showError(button, disclaimer);
+                }
+            }).catch(error => {
+                // CORS error means we need to try with no-cors, but also means the endpoint exists
+                console.log('CORS error, trying with no-cors mode...');
+                fetch(submitUrl, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                }).then(() => {
+                    // If no-cors doesn't throw, assume success
+                    this.showSuccess(button, disclaimer);
+                }).catch(err => {
+                    // If no-cors also fails, show error
+                    this.showError(button, disclaimer);
+                });
             });
+        });
+        
+        // Helper functions for success/error states
+        document.getElementById('email-form').showSuccess = function(button, disclaimer) {
+            button.innerHTML = '<span>✓ Success!</span>';
+            button.style.background = '#27ae60';
+            disclaimer.textContent = 'Thank you! We\'ll notify you when CompenSure is available.';
+            disclaimer.style.color = '#27ae60';
             
-            // Show success message
+            // Reset form after 3 seconds
             setTimeout(() => {
-                button.innerHTML = '<span>✓ Success!</span>';
-                button.style.background = '#27ae60';
-                disclaimer.textContent = 'Thank you! We\'ll notify you when CompenSure is available.';
-                disclaimer.style.color = '#27ae60';
-                
-                // Reset form after 3 seconds
-                setTimeout(() => {
-                    this.reset();
-                    button.innerHTML = '<span>Get Early Access</span>';
-                    button.disabled = false;
-                    button.style.background = '';
-                    disclaimer.textContent = 'Get notified when CompenSure is available for your firm';
-                    disclaimer.style.color = '';
-                }, 3000);
-            }, 1000);
-        });
+                this.reset();
+                button.innerHTML = '<span>Get Early Access</span>';
+                button.disabled = false;
+                button.style.background = '';
+                disclaimer.textContent = 'Get notified when CompenSure is available for your firm';
+                disclaimer.style.color = '';
+            }, 3000);
+        };
         
-        // SIMPLE TEST: Send GET request as soon as page loads
-        console.log('Starting simple GET test...');
-        const testUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf7q1wa8tIXAwSpYxte4YWxyqJAdOEafedlKzv9jcF5t93sbg/formResponse?entry.686134287=test@example.com&submit=Submit';
+        document.getElementById('email-form').showError = function(button, disclaimer) {
+            button.innerHTML = '<span>Invalid Email</span>';
+            button.style.background = '#e74c3c';
+            disclaimer.textContent = 'Please enter a valid email address.';
+            disclaimer.style.color = '#e74c3c';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                button.innerHTML = '<span>Get Early Access</span>';
+                button.disabled = false;
+                button.style.background = '';
+                disclaimer.textContent = 'Get notified when CompenSure is available for your firm';
+                disclaimer.style.color = '';
+            }, 3000);
+        };
         
-        fetch(testUrl, {
-            method: 'GET',
-            mode: 'no-cors'
-        }).then(() => {
-            console.log('✅ GET request SUCCESS - no error thrown');
-        }).catch((error) => {
-            console.log('❌ GET request FAILED:', error);
-        });
     </script>
 </body>
 </html>
