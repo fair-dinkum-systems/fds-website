@@ -1,10 +1,17 @@
+---
+title: 'CompenSure - Automated Payroll Audit Platform'
+description: 'Transform 2-week audit cycles into 1-day turnarounds with CompenSure automated payroll audit platform.'
+permalink: 'compensure/'
+eleventyExcludeFromCollections: true
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CompenSure - Automated Payroll Audit Platform</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
     <style>
         :root {
             --primary-black: #0d0d0d;
@@ -659,7 +666,7 @@
     <header>
         <nav class="container">
             <a href="#" class="logo">
-                <img src="favicon.ico" alt="CompenSure Logo">
+                <img src="/assets/favicons/favicon.ico" alt="CompenSure Logo">
                 <span>CompenSure</span>
             </a>
             <ul class="nav-links">
@@ -830,7 +837,7 @@
             }
         });
         
-        // Handle email form submission - simple like the working test
+        // Handle email form submission
         document.getElementById('email-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -842,29 +849,24 @@
             button.disabled = true;
             button.innerHTML = '<span>Submitting...</span>';
 
-            // Use the same approach as the working test with proper URL encoding
+            // Basic email validation
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                this.showError(button, disclaimer);
+                return;
+            }
+            
+            // Submit the form
             const submitUrl = `https://docs.google.com/forms/d/e/1FAIpQLSf7q1wa8tIXAwSpYxte4YWxyqJAdOEafedlKzv9jcF5t93sbg/formResponse?entry.686134287=${encodeURIComponent(email)}&submit=Submit`;
-            console.log('Submitting to:', submitUrl);
             
-            // Test with a known good email format first to validate approach
-            const testUrl = `https://docs.google.com/forms/d/e/1FAIpQLSf7q1wa8tIXAwSpYxte4YWxyqJAdOEafedlKzv9jcF5t93sbg/formResponse?entry.686134287=test@example.com&submit=Submit`;
-            
-            fetch(testUrl, {
+            fetch(submitUrl, {
                 method: 'GET',
                 mode: 'no-cors'
             }).then(() => {
-                // Now try the actual submission
-                fetch(submitUrl, {
-                    method: 'GET',
-                    mode: 'no-cors'
-                }).then(() => {
-                    this.showSuccess(button, disclaimer);
-                }).catch(error => {
-                    console.log('Actual submission failed:', error);
-                    this.showError(button, disclaimer);
-                });
+                // Assume success for valid email formats
+                this.showSuccess(button, disclaimer);
             }).catch(error => {
-                console.log('Form endpoint not working:', error);
+                console.log('Submission failed:', error);
                 this.showError(button, disclaimer);
             });
         });
