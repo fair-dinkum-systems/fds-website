@@ -1,59 +1,66 @@
-# Dictation doesn't help you write emails, neither do LLMs buuuuuuuuuuut
+# Voice-to-Email: Cut Your Email Time in Half
 
-![PPAP](./dbz.png)
+The core point of this short article is that voice dictations and Large Language Models (LLMs) are an excellent combination. Here we will be focusing on emails as an example, but great combination holds true across many other tasks.
+
+##
+
+Until recently I never used LLMs to help me with emails. A few times I tried. Consistently I found that by the time I finished typing out what should be in the email, I basically had a finished email already, so the LLM wasn't needed.
+
+If you had to break the task of writing an email up, the big time consuming part is getting what you want to say onto paper, in AI terms "providing context" and the easy part is formatting it. The LLM can only help with the formatting, so it's not that useful. 
+
+![Traditional Email Writing](./email-traditional-bar.svg)
+
+But, it turns out that dictation is a very efficient way to get what you want to say into paper. Studies show, for instance that dictation is around 3x as fast as typing for the same number of words [3]. When I have used dictation in the past I found it quite unnatural. I spend a lot of time pausing to think about how to exactly phrase the next sentence, and a lot of mental energy avoiding verbal tics like um and ahh. But if you know your dictation is going straight into a LLM, you don't need to worry about this, you can plan as you speak, just as if you were talking to a human scribe.
+
+![Email Writing Comparison](./email-comparison-bars.svg)
+
+Dictation is a very efficient way to provide context, but the output is a messy stream-of-consciusness. LLMS need lots of context to succeed, and they are great at cleaning up mess. It's a very effective combination.
 
 
 ## The Workflow
 
-Off-the-dome Yapping -> Dictation Software -> LLM -> Email Client
+Voice Input -> Speech Recognition -> AI Processing -> Email Client. Talk naturally, let AI clean it up, send your email.
 
 ![Workflow Diagram](./workflow-diagram.svg)
 
-
-It's legitimately twice as fast as typing. Maybe sounds like hype but I timed it.
+I did a little personal benchmarking on this, typing and dictating a few 100-word emails. The outcomes indicate that this method cuts email writing time in half. My typing speed is considered pretty fast too, around 80-90 words per minute, so this might represent a 3x or even 4x speedup for slower typists.
 
 ![Voice Demo](./typing-demo.gif)
 
-If you send 40 emails a week and each one takes 5 minutes to type, (which statistically you do [1] and they do [2]), that's 200 minutes. Cut that in half and you just saved a cool 1 hour 40 every week. And it's a lot more fun.
+Most professionals send about 40 emails per week, taking 5 minutes each [1][2]. That's over 3 hours of typing, so trying this out could save you 1.5 hours weekly.
 
-## More Detail
+## How to Do It
 
-1. Enable dictation on your computer (ask your LLM how) then just 
-2. Talk through what you want your email to say. Not carefully dictating - just explaining, stream of consciousness, keep in the ums and ahh's and backtracking, then at the end say "dash dash dash dash, make this into a really nice email"
-3. take that transcript, paste it into Claude or ChatGPT (or on a mac you can dictate directly into the LLM chat interface), and it gives you something you can *nearly* send. 
-5. Proof read
-4. Copy-paste that into your email client, tweak it a bit
-5. Send
+I have created a 3-minute walkthrough [here](https://www.youtube.com/watch?v=Zt98FBxtmAQ&ab_channel=anyone-can-build)
 
-For a 100 word email the whole process takes about 3 minutes, or half the time of typing it out character by character. That's for me at least, and my WPM is a reasonable 80-90.
+1. Enable dictation on your computer
+Macbook
+  1. on a macbook: settings --> search dictation --> keyboard --> toggle dictation on
+  2. now when you press "control" twice on any text field it will put your speech into that field instead
+Windows
+  1. Press Windows key + H to open voice typing
+  2. Click the microphone button or press Alt + ` (backtick) to start dictating
+  3. Your speech will be converted to text in any text field
+2. Talk through what you want to say – don't worry about perfect wording or mistakes
+3. End with: "dash dash dash dash Please turn this into a professional email"
+4. Paste your words into Claude or ChatGPT
+5. Review what the AI wrote
+6. Copy it to your email, make any final tweaks
+7. Send
 
-Also, again it's a lot more fun to speak your ideas out loud. It feels like you're an aristocrat with a scribe sitting there taking notes.
+A 100-word email takes about 3 minutes this way, compared to 6 minutes of typing.
 
-## Research?
+Plus, speaking your thoughts out loud often helps you organize them better and sound more natural.
 
-Research.
+## Things to Consider
 
-![Typing vs Dictation Study](./typing-vs-dictation.png)
+The main issue: you'll be talking out loud, which can disturb others in an open office, so maybe keep this for work from home days.
 
-Stanford did a study in 2016 [3] where they found dictation is 3x faster than typing on mobile devices. But that was traditional dictation where you speak every word exactly as it should appear.
+Also, it's most useful for emails longer than 50-75 words. Anything shorter than this seems to be faster to just type directly.
 
-This is different - you're not dictating the final text, you're dictating the rough ideas. The LLM handles turning your rambling into a clean final text. It's probably much faster than what they measured, though that's yet to be proven.
+## Give It a Try
 
-There's also some research [4] to say that typing is around as cognitively demanding as dictation. But again, the "brain dump emails" are probably a lot **less** cognitively demanding than dictation since you can make as many mistakes as you like, the LLM's got your back.
-
-## Why Everyone Isn't Doing This Yet
-
-I actually don't know.
-
-What I DO know though is that I spent a whole weekend overengineering this concept. I tried several different setups and found the easiest-to-setup MCP server for Gmail integration so I could tell claude "send the email" and it would do that too. Total waste tough.
-
-Copy-paste is fine. Actually, it's better since - you'll want to tweak the output anyway.
-
-What matters is this: **You'll write emails 2x faster and actually enjoy it.**
-
-## Just Try It Once
-
-Next email you need to write, try this instead of typing. Takes 3 minutes to set up and could save you half your email writing time.
+Next time you need to write a longer email, try this method. Setup takes 3 minutes, and if it works this could make your work day noticeably more enjoyable.
 
 ---
 
