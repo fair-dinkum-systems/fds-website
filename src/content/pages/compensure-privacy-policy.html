@@ -1,0 +1,519 @@
+---
+title: 'CompenSure - Privacy Policy'
+description: 'Privacy Policy for CompenSure automated payroll audit platform'
+permalink: 'compensure-privacy-policy/'
+eleventyExcludeFromCollections: true
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompenSure - Privacy Policy</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+    <style>
+        :root {
+            --primary-black: #0d0d0d;
+            --secondary-black: #1a1a1a;
+            --dark-gray: #303030;
+            --mid-gray: #545454;
+            --light-gray: #9a9a9a;
+            --off-white: #f8f8f8;
+            --accent-blue: #021CC7;
+            --accent-light: #4169E1;
+            --max-width: 1400px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--off-white);
+            background: var(--primary-black);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--off-white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .logo:hover {
+            color: var(--accent-light);
+        }
+        
+        .logo img {
+            width: 32px;
+            height: 32px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--off-white);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-light);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .privacy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10rem 0 6rem;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(2, 28, 199, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(65, 105, 225, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(2, 28, 199, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--light-gray) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .last-updated {
+            color: var(--light-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .privacy-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .privacy-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-light), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        .highlight-section {
+            background: rgba(2, 28, 199, 0.1);
+            border: 1px solid rgba(65, 105, 225, 0.3);
+        }
+        
+        h2 {
+            color: var(--off-white);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        h3 {
+            color: var(--off-white);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        ul, ol {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        strong {
+            color: var(--off-white);
+            font-weight: 600;
+        }
+        
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--off-white);
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--mid-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--primary-black);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .privacy-section {
+                padding: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .privacy-content {
+                padding: 8rem 0 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="/compensure/" class="logo">
+                <img src="/assets/favicons/favicon.ico" alt="CompenSure Logo">
+                <span>CompenSure</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/compensure/">Home</a></li>
+                <li><a href="/compensure/#demo">Demo</a></li>
+                <li><a href="/compensure/#features">Features</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="privacy-content">
+            <div class="page-header">
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last updated: September 15, 2025</p>
+            </div>
+            
+            <div class="privacy-section highlight-section">
+                <h2>Privacy-First Approach</h2>
+                <p><strong>CompenSure operates on a minimal data collection model. We collect and store only authentication credentials necessary for user access. No other data of any kind is stored on permanent servers.</strong></p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>1. Introduction</h2>
+                <p>CompenSure ("we," "us," or "our") is committed to protecting your privacy through a minimal data collection approach. This Privacy Policy explains our data practices when you use our automated payroll audit platform and related services (collectively, the "Service").</p>
+                <p>By accessing or using our Service, you agree to the data practices outlined in this Privacy Policy.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>2. Information We Collect</h2>
+                
+                <h3>2.1 Authentication Data Only</h3>
+                <p><strong>We collect and store only the minimal information necessary for user authentication:</strong></p>
+                <ul>
+                    <li>Username</li>
+                    <li>Email address</li>
+                    <li>Password (encrypted and hashed)</li>
+                </ul>
+                
+                <h3>2.2 What We Do NOT Collect or Store</h3>
+                <p><strong>CompenSure does not collect, store, or retain any other data including:</strong></p>
+                <ul>
+                    <li>Payroll data or employee information</li>
+                    <li>Personal information beyond authentication credentials</li>
+                    <li>Company data or business information</li>
+                    <li>Financial or banking information</li>
+                    <li>Usage analytics or behavioral tracking data</li>
+                    <li>Technical logs, performance metrics, or system analytics</li>
+                    <li>Cookies or tracking technologies</li>
+                    <li>IP addresses or device information</li>
+                    <li>Any data processed through our audit platform</li>
+                </ul>
+                
+                <h3>2.3 Zero-Persistence Data Processing</h3>
+                <p>CompenSure operates on a zero-persistence model for all data except authentication credentials. Any payroll or business data you upload for audit purposes is:</p>
+                <ul>
+                    <li>Processed in temporary memory only</li>
+                    <li>Never written to permanent storage or databases</li>
+                    <li>Automatically purged upon session completion</li>
+                    <li>Not retained, cached, logged, or backed up in any form</li>
+                    <li>Never transmitted to third parties</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>The minimal authentication data we collect is used solely for:</p>
+                <ul>
+                    <li><strong>User Authentication:</strong> To verify your identity and provide secure access to the platform</li>
+                    <li><strong>Account Management:</strong> To maintain your user account and enable login functionality</li>
+                    <li><strong>Security:</strong> To protect against unauthorized access and maintain platform security</li>
+                </ul>
+                <p><strong>We do not use your data for:</strong></p>
+                <ul>
+                    <li>Analytics, tracking, or profiling of any kind</li>
+                    <li>Marketing or promotional purposes</li>
+                    <li>Third-party sharing or monetization</li>
+                    <li>Performance monitoring or usage analysis</li>
+                    <li>Any purpose beyond basic authentication</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>4. Information Sharing and Disclosure</h2>
+                <p><strong>We do not share any information with third parties except:</strong></p>
+                <ul>
+                    <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
+                    <li><strong>Security Threats:</strong> To prevent fraud or address security issues</li>
+                    <li><strong>Consent:</strong> With your explicit written consent</li>
+                </ul>
+                <p>We do not have business relationships with data processors, analytics providers, or advertising partners as we do not collect such data.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>5. Data Security</h2>
+                <p>We implement robust security measures to protect your authentication credentials:</p>
+                <ul>
+                    <li><strong>Encryption:</strong> All passwords are encrypted using industry-standard hashing algorithms</li>
+                    <li><strong>Secure Transmission:</strong> Data transmitted using TLS 1.3 encryption</li>
+                    <li><strong>Access Controls:</strong> Strict access limitations and authentication requirements</li>
+                    <li><strong>Infrastructure Security:</strong> Secure hosting environment with regular security updates</li>
+                    <li><strong>No Data Persistence:</strong> Zero permanent storage of sensitive business data</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>6. Data Retention</h2>
+                <p>Our data retention is minimal by design:</p>
+                <ul>
+                    <li><strong>Authentication Data:</strong> Retained only while your account is active</li>
+                    <li><strong>Processed Data:</strong> Zero retention - all audit data is immediately purged after processing</li>
+                    <li><strong>Account Deletion:</strong> All authentication data is permanently deleted upon account closure</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>7. Your Privacy Rights</h2>
+                <p>You have the following rights regarding your minimal data:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request access to your authentication data</li>
+                    <li><strong>Correction:</strong> Update your username, email, or password</li>
+                    <li><strong>Deletion:</strong> Delete your account and all associated authentication data</li>
+                    <li><strong>Portability:</strong> Export your basic account information</li>
+                </ul>
+                <p>Since we don't collect other types of data, many traditional privacy rights are not applicable to our service.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>8. No Cookies or Tracking</h2>
+                <p>CompenSure does not use:</p>
+                <ul>
+                    <li>Cookies or similar tracking technologies</li>
+                    <li>Analytics tools or user behavior tracking</li>
+                    <li>Third-party scripts or monitoring tools</li>
+                    <li>Session recording or user interaction tracking</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>9. Third-Party Services</h2>
+                <p>We minimize third-party integrations to protect your privacy. Any third-party services we use are limited to essential infrastructure (hosting, security) and do not have access to your authentication data or processed content.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>10. International Data Transfers</h2>
+                <p>Authentication data may be stored on secure servers located in different jurisdictions. All transfers comply with applicable data protection laws and include appropriate safeguards.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>11. Children's Privacy</h2>
+                <p>Our Service is not intended for individuals under 18 years of age. We do not knowingly collect information from children under 18.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>12. Updates to This Privacy Policy</h2>
+                <p>We may update this Privacy Policy to reflect changes in our minimal data practices or legal requirements. Material changes will be communicated through:</p>
+                <ul>
+                    <li>Email notifications to registered users</li>
+                    <li>Prominent notices on our platform</li>
+                    <li>Updated policy posted on our website</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 CompenSure. All rights reserved. | <a href="/compensure/">Home</a> | <a href="/compensure-privacy-policy/">Privacy Policy</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease both';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.privacy-section').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
