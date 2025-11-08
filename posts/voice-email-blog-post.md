@@ -1,4 +1,4 @@
-# Voice-to-Email: Cut Your Email Time in Half
+# You Can Probably Write Emails Twice as Fast using Dictation and LLMs
 
 The core point of this short article is that voice dictations and Large Language Models (LLMs) are an excellent combination. Here we will be focusing on emails as an example, but great combination holds true across many other tasks.
 
@@ -10,11 +10,11 @@ If you had to break the task of writing an email up, the big time consuming part
 
 ![Traditional Email Writing](./email-traditional-bar.svg)
 
-But, it turns out that dictation is a very efficient way to get what you want to say into paper. Studies show, for instance that dictation is around 3x as fast as typing for the same number of words [3]. When I have used dictation in the past I found it quite unnatural. I spend a lot of time pausing to think about how to exactly phrase the next sentence, and a lot of mental energy avoiding verbal tics like um and ahh. But if you know your dictation is going straight into a LLM, you don't need to worry about this, you can plan as you speak, just as if you were talking to a human scribe.
+But, it turns out that dictation is a very efficient way to get what you want to say into paper. Studies show, for instance that dictation is around 3x as fast as typing for the same number of words [3]. When I have used dictation in the past I found it quite unnatural. I spent a lot of time pausing to think about how to exactly phrase the next sentence, and a lot of mental energy avoiding verbal tics like um and ahh. But if you know your dictation is going straight into a LLM, you don't need to worry about this, you can plan as you speak, just as if you were talking to a human scribe.
 
 ![Email Writing Comparison](./email-comparison-bars.svg)
 
-Dictation is a very efficient way to provide context, but the output is a messy stream-of-consciusness. LLMS need lots of context to succeed, and they are great at cleaning up mess. It's a very effective combination.
+Dictation is a very efficient way to provide context, but the output is an unstructured stream-of-consciusness. LLMS need lots of context to succeed, and they are great at formatting. It's a very effective combination.
 
 
 ## The Workflow
@@ -33,24 +33,32 @@ Most professionals send about 40 emails per week, taking 5 minutes each [1][2]. 
 
 I have created a 3-minute walkthrough [here](https://www.youtube.com/watch?v=Zt98FBxtmAQ&ab_channel=anyone-can-build)
 
+But here are the instructions in text:
+
 1. Enable dictation on your computer
-Macbook
-  1. on a macbook: settings --> search dictation --> keyboard --> toggle dictation on
-  2. now when you press "control" twice on any text field it will put your speech into that field instead
-Windows
-  1. Press Windows key + H to open voice typing
-  2. Click the microphone button or press Alt + ` (backtick) to start dictating
-  3. Your speech will be converted to text in any text field
-2. Talk through what you want to say – don't worry about perfect wording or mistakes
-3. End with: "dash dash dash dash Please turn this into a professional email"
-4. Paste your words into Claude or ChatGPT
+
+    **Macbook**
+    
+    1. on a macbook: settings --> search dictation --> keyboard --> toggle dictation on
+    2. now when you press "control" twice on any text field it will put your speech into that field instead
+    
+    ![Mac dictation settings](./mac.png)
+    
+    **Windows**
+    
+    1. Press Windows key + H to open voice typing
+    2. Click the microphone button or press Alt + ` (backtick) to start dictating
+    3. Your speech will be converted to text in any text field
+    
+    ![Windows voice typing](./windows.png)
+
+2. Talk through what you want to say – don't worry about perfect wording or mistakes. End with: "dash dash dash dash turn this into a professional email"
+4. Paste your words into Claude or ChatGPT or your preferred model
 5. Review what the AI wrote
 6. Copy it to your email, make any final tweaks
 7. Send
 
-A 100-word email takes about 3 minutes this way, compared to 6 minutes of typing.
-
-Plus, speaking your thoughts out loud often helps you organize them better and sound more natural.
+A 100-word email takes about 3 minutes this way, compared to 6 minutes of typing. Plus, speaking your thoughts out loud is more fun than typing and often helps you frame ideas more effectively.
 
 ## Things to Consider
 
